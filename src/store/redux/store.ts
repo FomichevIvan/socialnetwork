@@ -1,9 +1,13 @@
-import {configureStore} from "@reduxjs/toolkit";
-
+import {configureStore, combineReducers} from "@reduxjs/toolkit";
+import postsReducer from "./posts";
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        posts: postsReducer
+    },
 })
+
+// console.log(store)
 
 
 export type RootState = ReturnType<typeof store.getState>
