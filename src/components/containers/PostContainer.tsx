@@ -3,7 +3,8 @@ import PostList from "../presentational/PostList";
 import {IPost} from "../../shared/interfaces/post";
 import { useSelector, useDispatch } from 'react-redux'
 import {RootState} from "../../store/redux/store";
-import {addPosts} from "../../store/redux/posts";
+import {addPost, loadPosts} from "../../store/redux/posts";
+import Post from "../../utils/post";
 
 export default function PostContainer() {
 
@@ -17,17 +18,24 @@ export default function PostContainer() {
         return response.ok ? await response.json() : new Error();
     }
 
+    const onAdd = () => {
+        dispatch(addPost(new Post()))
+    }
+
     useEffect(() => {
         getData().then(posts => {
-            dispatch(addPosts(posts.slice(0,10)))
+            dispatch(loadPosts(posts.slice(0,10)))
         })
     }, [])
 
 
-    console.log(list, 'list')
+
+
+    // console.log(list, 'list')
 
     return (
         <>
+            {list ? <button onClick={onAdd}>Add Post</button> : null}
             {list ? <PostList posts={list}/> : <div>Error!!</div>}
         </>
     )

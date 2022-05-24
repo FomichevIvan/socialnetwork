@@ -10,7 +10,6 @@ function App() {
       <div className={'main-cont'}>
         <PostContainer/>
       </div>
-
     </div>
   );
 }
