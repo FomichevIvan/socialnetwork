@@ -26,7 +26,7 @@ export default function PostContainer() {
 
     return (
         <>
-            {<button onClick={onAdd}>Add Post</button> }
+            {<button className={'start-button'} onClick={onAdd}>Add Post</button> }
             {start && <PostForm/>}
             {<PostList/>}
         </>

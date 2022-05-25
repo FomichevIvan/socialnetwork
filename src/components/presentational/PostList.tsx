@@ -6,7 +6,8 @@ import {RootState} from "../../store/redux/store";
 
 
 export function PostList () : ReactElement {
-   const list = useSelector((state: RootState) => state.posts.posts)
+   const list = useSelector((state: RootState) => state.posts.posts);
+    console.log(list)
 
     const elements = list?.map(({userId, id, title, body}: IPost) : ReactElement => {
         return (

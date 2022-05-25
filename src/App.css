@@ -19,3 +19,21 @@ margin: 2px;
     margin: 20px;
 }
 
+.post-form-cont {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+
+.start-button {
+    margin-left: 10px;
+}
+
+.button-cont {
+    display: flex;
+    width: 8%;
+    justify-content: space-around;
+}
