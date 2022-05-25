@@ -1,16 +1,12 @@
 import {ReactElement, ReactNode, useEffect, useState} from "react";
-import PostList from "../presentational/PostList";
+import {PostList, PostForm} from "../presentational/index";
 import {IPost} from "../../shared/interfaces/post";
 import { useSelector, useDispatch } from 'react-redux'
 import {RootState} from "../../store/redux/store";
 import {addPost, loadPosts} from "../../store/redux/posts";
-import Post from "../../utils/post";
 
 export default function PostContainer() {
-
-    // const  [list, setList] = useState <IPost[] | null> (null)
-
-    const list = useSelector((state: RootState) => state.posts.posts)
+    const start = useSelector((state: RootState) => state.posts.start)
     const dispatch = useDispatch()
 
     const getData = async function getData (): Promise<IPost[]> {
@@ -19,7 +15,7 @@ export default function PostContainer() {
     }
 
     const onAdd = () => {
-        dispatch(addPost(new Post()))
+        dispatch(addPost())
     }
 
     useEffect(() => {
@@ -28,15 +24,11 @@ export default function PostContainer() {
         })
     }, [])
 
-
-
-
-    // console.log(list, 'list')
-
     return (
         <>
-            {list ? <button onClick={onAdd}>Add Post</button> : null}
-            {list ? <PostList posts={list}/> : <div>Error!!</div>}
+            {<button onClick={onAdd}>Add Post</button> }
+            {start && <PostForm/>}
+            {<PostList/>}
         </>
     )
 }

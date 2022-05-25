@@ -1,13 +1,14 @@
 import {IPost} from "../../shared/interfaces/post";
-import Post from "./Post";
+import {Post} from "./index";
 import {ReactElement, ReactNode} from "react";
+import {useSelector} from "react-redux";
+import {RootState} from "../../store/redux/store";
 
 
-export default function PostList ({posts} : any) : ReactElement {
-    console.log(posts)
+export function PostList () : ReactElement {
+   const list = useSelector((state: RootState) => state.posts.posts)
 
-
-    const elements = posts?.map(({userId, id, title, body}: IPost) : ReactElement => {
+    const elements = list?.map(({userId, id, title, body}: IPost) : ReactElement => {
         return (
 
                 <div key={id} className={'posts-container'}>
