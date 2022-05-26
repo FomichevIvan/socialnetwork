@@ -1,27 +1,19 @@
-import {ReactElement, ReactNode, useEffect, useState} from "react";
-import {PostList, PostForm} from "../presentational/index";
-import {IPost} from "../../shared/interfaces/post";
+import {useEffect} from "react";
+import {PostList, PostForm} from "../presentational";
 import { useSelector, useDispatch } from 'react-redux'
-import {RootState} from "../../store/redux/store";
-import {addPost, loadPosts} from "../../store/redux/posts";
+import {RootState, AppDispatch} from "../../store/redux/store";
+import {addPost, loadAllPosts} from "../../store/redux/posts";
 
 export default function PostContainer() {
     const start = useSelector((state: RootState) => state.posts.start)
-    const dispatch = useDispatch()
-
-    const getData = async function getData (): Promise<IPost[]> {
-        const response =  await fetch('https://jsonplaceholder.typicode.com/posts')
-        return response.ok ? await response.json() : new Error();
-    }
+    const dispatch  = useDispatch<AppDispatch>()
 
     const onAdd = () => {
         dispatch(addPost())
     }
 
     useEffect(() => {
-        getData().then(posts => {
-            dispatch(loadPosts(posts.slice(0,10)))
-        })
+        dispatch(loadAllPosts())
     }, [])
 
     return (

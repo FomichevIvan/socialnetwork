@@ -1,6 +1,6 @@
 import {IPost} from "../../shared/interfaces/post";
 import {ReactElement} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {deletePost} from "../../store/redux/posts";
 
 export function Post ({userId, id, title, body}: IPost) : ReactElement {

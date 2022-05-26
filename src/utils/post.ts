@@ -1,0 +1,14 @@
+import {IPost} from "../shared/interfaces/post";
+
+export default class Post implements IPost{
+    userId: string | null;
+    id: string | null;
+    title: string;
+    body: string
+    constructor(title : string, body: string) {
+        this.id = self.crypto.randomUUID();
+        this.userId = null;
+        this.title = title;
+        this.body = body
+    }
+}

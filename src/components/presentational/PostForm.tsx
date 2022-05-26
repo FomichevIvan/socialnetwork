@@ -1,34 +1,30 @@
-import {ReactElement, useState} from "react";
-import Post from "../../utils/post";
+import {useState} from "react";
 import  {SyntheticEvent} from 'react';
 import { useDispatch} from "react-redux";
 import {createPost} from "../../store/redux/posts";
+import {IPost} from "../../shared/interfaces/post";
 
 export function PostForm () {
 
-    const [newPost, setNewPost] = useState(new Post())
+    const initialState = {id: null, userId: null, title: '', body: ''}
+    const [newPost, setNewPost] = useState<IPost>(initialState);
+    const dispatch = useDispatch();
 
-
-    const dispatch = useDispatch()
-
-    const onInput = (e: SyntheticEvent)  => {// обработка полей и запись в локальный стейт
+    const onChange = (e : SyntheticEvent) => {
         const {value, id} = e.target as HTMLInputElement;
-        setNewPost(post => ({...post, [id]: value}));
+         setNewPost(state => ({...state, [id]: value}))
     }
 
-    const onSubmit = () => {// отправка нового поста
-        // setNewPost(post => ({...post, id: self.crypto.randomUUID()}))// добавляем айди при создании поста -
-        // ПОЧЕМУ НЕ РАБОТАЕТ!?
-        // console.log(newPost)
-        dispatch(createPost(newPost))
-        setNewPost(new Post())// очистка формы (так себе вариант, но не стал делать еще один вариант объекта
-        // начального состояния)
+    const onSubmit = () => {
+        dispatch(createPost({title: newPost.title, body: newPost.body, id:  self.crypto.randomUUID(), userId: null}))
+        setNewPost(initialState)
     }
 
     return (
         <div className={'post-form-cont'}>
-                <input value={(newPost.title === null || newPost.title === undefined) ? '' : newPost.title } id={'title'} placeholder={'title'} onChange={onInput} className={'post-title-input'}/>
-                <input value={(newPost.body === null || newPost.body === undefined) ? '' : newPost.body } id={'body'} placeholder={'text something'} onChange={onInput} className={'post-body-input'}/>
+                <input value={(newPost.title === null || newPost.title === undefined) ? '' : newPost.title } id={'title'} placeholder={'title'} onChange={onChange} className={'post-title-input'}/>
+                <input value={(newPost.body === null || newPost.body === undefined) ? '' : newPost.body } id={'body'} placeholder={'text' +
+                    ' something'} onChange={onChange} className={'post-body-input'}/>
                 <button disabled={!newPost.title && !newPost.body} onClick={onSubmit}>Submit Post</button>
         </div>
     )
