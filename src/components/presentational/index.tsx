@@ -1,3 +1,3 @@
-export {Post} from './Post'
-export {PostForm} from './PostForm';
-export {PostList} from './PostList'
+export {ListMui} from './ListMui';
+export {PostModalForm} from './PostModalForm'
+export {PostMui} from './PostMui';

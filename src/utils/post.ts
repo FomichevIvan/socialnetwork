@@ -6,6 +6,7 @@ export default class Post implements IPost{
     title: string;
     body: string
     constructor(title : string, body: string) {
+        // eslint-disable-next-line no-restricted-globals
         this.id = self.crypto.randomUUID();
         this.userId = null;
         this.title = title;

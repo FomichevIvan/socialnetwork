@@ -29,11 +29,18 @@ margin: 2px;
 }
 
 .start-button {
-    margin-left: 10px;
-}
+    /*margin-left: 20px;*/
+    /*padding-bottom: 50px;*/
 
+}
 .button-cont {
     display: flex;
-    width: 8%;
+    /*flex-direction: column;*/
     justify-content: space-around;
+}
+
+.row-cont {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
