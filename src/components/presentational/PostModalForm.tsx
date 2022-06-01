@@ -1,16 +1,17 @@
 import {useState} from "react";
 import  {SyntheticEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {changeFlag, createPost, saveEditedPost} from "../../store/redux/posts";
+import {changeFlag, createNewPost, editPostAsync} from "../../store/redux/posts";
 import {IPost, IPostModalProps} from "../../shared/interfaces/post";
 import {Box, Button, Input, Modal, TextField} from "@mui/material";
+import {AppDispatch} from '../../store/redux/store'
 
 export function PostModalForm ({onCancel, post, show}: IPostModalProps) {
 
 
     const [currentPost, setCurrentPost] = useState<IPost>(post);
     const {id, title, body} = currentPost;
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     const onChange = (e : SyntheticEvent) => {
         const {value, id} = e.target as HTMLInputElement;
@@ -19,12 +20,13 @@ export function PostModalForm ({onCancel, post, show}: IPostModalProps) {
 
     const onSubmit = () => {
         if (id) {
-            dispatch(saveEditedPost(currentPost))
+            dispatch(editPostAsync(currentPost))
             dispatch(changeFlag(false))
         }
 
         else {
-            dispatch(createPost(currentPost))
+
+            dispatch(createNewPost(currentPost))
             dispatch(changeFlag(false))
         }
     }

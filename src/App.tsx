@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       <div className={'main-cont'}>
         <PostContainer/>
+          {/*{errr && <Toast/>}*/}
       </div>
     </div>
   );

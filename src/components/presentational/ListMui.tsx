@@ -10,9 +10,10 @@ import { PostMui } from './PostMui';
 export function ListMui () {
 
     const list = useSelector((state: RootState) => state.posts.posts);
+    // console.log(list, 'list')
     return (
         <Box sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}>
-            {list?.map(({userId, id, title, body}: IPost): ReactElement => (
+            {list?.map(({userId, title, body, id}: IPost): ReactElement => (
                         <PostMui key={id} title={title} body={body} userId={userId} id={id}/>
             ))}
 

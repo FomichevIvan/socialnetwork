@@ -4,13 +4,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import {RootState, AppDispatch} from "../../store/redux/store";
 import {changeFlag, loadAllPosts, setCurPost} from "../../store/redux/posts";
 
-import {Button, List } from '@mui/material';
+import {Button, Divider, List} from '@mui/material';
 import {PostModalForm} from "../presentational";
 
 
 export default function PostContainer() {
+    // const updated = useSelector((state: RootState) => state.posts.updated);
     const show = useSelector((state: RootState) => state.posts.show);
-    const post = useSelector((state : RootState) => state.posts.curPost)
+    const post = useSelector((state : RootState) => state.posts.curPost);
+    //как правильно сделать зависимость для юзэфф.
+    //как быть с _id (где его обработать)
+
     const dispatch  = useDispatch<AppDispatch>()
 
 
