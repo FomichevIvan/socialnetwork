@@ -19,18 +19,21 @@ export interface IReduxState {
 }
 
 export interface IReduxUserState {
-  user: IUser;
-  show: boolean;
+  user: IUser | null;
+  isNew: boolean;
+  error: string;
 }
 
 export interface IUser {
   displayName: string;
   email: string;
   password: string;
+  uid: string;
 }
 
-export interface IAuthProps {
-  authorized: boolean;
-  user: IUser;
-  onSubmit: () => void;
-}
+// export interface IAuthProps {
+//   // authorized: boolean;
+//   // user: IUser;
+//   // onSubmit: any;
+//   // error: string;
+// }

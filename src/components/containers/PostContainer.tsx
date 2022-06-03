@@ -12,9 +12,7 @@ export default function PostContainer() {
   // const updated = useSelector((state: RootState) => state.posts.updated);
   const show = useSelector((state: RootState) => state.posts.show);
   const post = useSelector((state: RootState) => state.posts.curPost);
-  const user = useSelector((state: RootState) => state.users.user);
-  //как правильно сделать зависимость для юзэфф.
-  //как быть с _id (где его обработать)
+  const user = useSelector((state: RootState) => state.user.user);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -28,8 +26,8 @@ export default function PostContainer() {
   };
 
   useEffect(() => {
-    dispatch(loadAllPosts());
-  }, []);
+    user && dispatch(loadAllPosts());
+  }, [user?.uid]);
 
   return (
     <>
@@ -41,14 +39,7 @@ export default function PostContainer() {
       {/*  Add post*/}
       {/*</Button>*/}
       {/*{show && <PostModalForm post={post} onCancel={onCancel} show={show} />}*/}
-      {/*{<ListMui />}*/}
-      {
-        <AuthForm
-          user={user}
-          authorized={false}
-          onSubmit={() => console.log('sub!')}
-        />
-      }
+      {<ListMui />}
     </>
   );
 }

@@ -5,7 +5,7 @@ import userSliceReducer from './users';
 export const store = configureStore({
   reducer: {
     posts: postSliceReducer,
-    users: userSliceReducer,
+    user: userSliceReducer,
   },
 });
 

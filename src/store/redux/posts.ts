@@ -12,6 +12,7 @@ export const loadAllPosts = createAsyncThunk(
   'loadAll',
   async function (_, { rejectWithValue }) {
     const response = await fetch(getUrl('posts'));
+    console.log('loading!');
     const result = await response.json();
     return result ? result.posts : rejectWithValue('sorry, no post!((('); // почему приходит в виде объекта с ключом
     // posts??
@@ -61,8 +62,6 @@ export const editPostAsync = createAsyncThunk(
     };
     const response = await fetch(getUrl('posts'), editParams);
     const result = await response.json();
-    const a = 12;
-
     return result ? result.post : rejectWithValue('no edit!');
   }
 );
