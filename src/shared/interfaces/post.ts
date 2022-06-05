@@ -1,3 +1,5 @@
+import { User } from 'firebase/auth';
+
 export interface IPost {
   userId: string | null;
   id: string | null;

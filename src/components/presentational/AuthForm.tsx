@@ -6,21 +6,38 @@ import { AppDispatch, RootState } from '../../store/redux/store';
 import { changeStatus, clearErrors } from '../../store/redux/users';
 // import { authUserAsync } from '../../store/redux/users';
 import { registerUserAsync, signInUserAsync } from '../../store/redux/firebase';
+import { useMatch, useNavigate } from 'react-router-dom';
 
 export function AuthForm() {
-  const user = useSelector((state: RootState) => state.user.user);
-  const isNew = useSelector((state: RootState) => state.user.isNew);
+  // const user = useSelector((state: RootState) => state.user.user);
+  const isNew = useMatch('register');
+  // console.log(isNew, 'new');
   const error = useSelector((state: RootState) => state.user.error);
   const dispatch = useDispatch<AppDispatch>();
 
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
 
-  // const [userForm, setUserForm] = useState<IUser | null>(user);
+  const navigate = useNavigate();
+
+  // const defaultV = {
+  //   displayName: '',
+  //   email: '',
+  //   password: '',
+  //   uid: '',
+  // };
+  // const [userForm, setUserForm] = useState<IUser | null>(user || defaultV);
   // const { email, password } = userForm || ({} as IUser);
   // const onChange = (e: SyntheticEvent) => {
   //   const { value, id } = e.target as HTMLInputElement;
-  //   setUserForm(state => ({ ...state, [id]: value }));
+  //   setUserForm(state => {
+  //     return {...state, [id]: value}
+  //     // if (state) {
+  //     //   return { ...state, [id]: value };
+  //     // } else {
+  //     //   return { [id]: value };
+  //     // }
+  //   });
   // };
 
   const onChangeEmail = (e: SyntheticEvent) => {
@@ -36,10 +53,10 @@ export function AuthForm() {
   };
 
   const userIsNew = () => {
-    dispatch(changeStatus(true));
+    navigate('/register');
   };
   const userIsExisted = () => {
-    dispatch(changeStatus(false));
+    navigate('/login');
   };
 
   const getUser = () => {
@@ -93,3 +110,6 @@ export function AuthForm() {
     </div>
   );
 }
+
+//чистка. Новая ветка: 1. структура папок, 2. isNew  из стейта убрать 3. реализовать сохраниение юзера (сохранить в
+// локалсторадж - достаем ююайди и обращаемся в файр)
