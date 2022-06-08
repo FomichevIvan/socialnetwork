@@ -1,14 +1,10 @@
 import { useState } from 'react';
 import { SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  changeFlag,
-  createNewPost,
-  editPostAsync,
-} from '../../store/redux/posts';
-import { IPost, IPostModalProps } from '../../shared/interfaces/post';
+import { changeFlag, createNewPost, editPostAsync } from '../store/redux/posts';
+import { IPost, IPostModalProps } from '../shared/interfaces/post';
 import { Box, Button, Input, Modal, TextField } from '@mui/material';
-import { AppDispatch } from '../../store/redux/store';
+import { AppDispatch } from '../store/redux/store';
 
 export function PostModalForm({ onCancel, post, show }: IPostModalProps) {
   const [currentPost, setCurrentPost] = useState<IPost>(post);

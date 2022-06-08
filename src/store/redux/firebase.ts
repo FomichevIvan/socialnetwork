@@ -2,6 +2,7 @@ import { auth } from '../../index';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -19,9 +20,9 @@ export const signInUserAsync = createAsyncThunk(
         password
       );
       const user = userCredential.user;
-      const nonSerialized = JSON.parse(JSON.stringify(user));
-      return nonSerialized;
+      return JSON.parse(JSON.stringify(user));
     } catch (error: any) {
+      // return rejectWithValue(JSON.parse(JSON.stringify(error)));
       return rejectWithValue(error.message);
     }
   }
@@ -41,10 +42,31 @@ export const registerUserAsync = createAsyncThunk(
         password
       );
       const user = userCredential.user;
-      const nonSerialized = JSON.parse(JSON.stringify(user));
-      return nonSerialized;
+      return JSON.parse(JSON.stringify(user));
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      // return rejectWithValue(JSON.parse(JSON.stringify(error)));
+      return rejectWithValue(error.message); // оббработка ошибок на фронте??
+    }
+  }
+);
+
+export const signOutUser = () => {
+  signOut(auth)
+    .then(() => {
+      console.log('Signed out');
+    })
+    .catch(error => {
+      console.log(error, 'err');
+    });
+};
+
+export const signOutUserAsync = createAsyncThunk(
+  'signOutUser',
+  async (_, { rejectWithValue }) => {
+    try {
+      return await signOut(auth);
+    } catch (error: any) {
+      return rejectWithValue(error);
     }
   }
 );

@@ -1,4 +1,5 @@
 import { User } from 'firebase/auth';
+import { ListComponent } from '../../components';
 
 export interface IPost {
   userId: string | null;
@@ -22,7 +23,7 @@ export interface IReduxState {
 
 export interface IReduxUserState {
   user: IUser | null;
-  isNew: boolean;
+  message: string;
   error: string;
 }
 
@@ -33,9 +34,11 @@ export interface IUser {
   uid: string;
 }
 
-// export interface IAuthProps {
-//   // authorized: boolean;
-//   // user: IUser;
-//   // onSubmit: any;
-//   // error: string;
-// }
+export interface IToast {
+  text: string;
+  severity: string;
+}
+
+export interface IListComponentProps {
+  list: IPost[];
+}

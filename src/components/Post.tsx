@@ -1,20 +1,16 @@
-import { IPost } from '../../shared/interfaces/post';
+import { IPost } from '../shared/interfaces/post';
 import { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  changeFlag,
-  deletePostAsync,
-  setCurPost,
-} from '../../store/redux/posts';
+import { changeFlag, deletePostAsync, setCurPost } from '../store/redux/posts';
 import { Button, ListItemText, Paper } from '@mui/material';
 import ListItem from '@mui/material/ListItem';
+import { AppDispatch } from '../store/redux/store';
 
-export function PostMui({ userId, id, title, body }: IPost): ReactElement {
-  const dispatch = useDispatch();
+export function Post({ userId, id, title, body }: IPost): ReactElement {
+  const dispatch = useDispatch<AppDispatch>();
 
   const onDelete = () => {
-    // @ts-ignore
-    dispatch(deletePostAsync(id));
+    id && dispatch(deletePostAsync(id));
   };
 
   const onEdit = () => {

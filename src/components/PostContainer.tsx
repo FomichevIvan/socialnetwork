@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
-import { ListMui } from '../presentational';
+import { ListComponent } from './index';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../../store/redux/store';
-import { changeFlag, loadAllPosts, setCurPost } from '../../store/redux/posts';
+import { RootState, AppDispatch } from '../store/redux/store';
+import { changeFlag, loadAllPosts, setCurPost } from '../store/redux/posts';
 
 import { Button, Divider, List } from '@mui/material';
-import { PostModalForm } from '../presentational';
-import { AuthForm } from '../presentational/AuthForm';
+import { PostModalForm } from './index';
+import { AuthForm } from './AuthForm';
 
 export default function PostContainer() {
-  // const updated = useSelector((state: RootState) => state.posts.updated);
   const show = useSelector((state: RootState) => state.posts.show);
   const post = useSelector((state: RootState) => state.posts.curPost);
-  const user = useSelector((state: RootState) => state.user.user);
+  const list = useSelector((state: RootState) => state.posts.posts);
+  const user = useSelector((state: RootState) => state.user);
+  const state = useSelector((state: RootState) => state);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -26,8 +27,8 @@ export default function PostContainer() {
   };
 
   useEffect(() => {
-    user && dispatch(loadAllPosts());
-  }, [user?.uid]);
+    user.user && dispatch(loadAllPosts());
+  }, [user.user]);
 
   return (
     <>
@@ -39,7 +40,7 @@ export default function PostContainer() {
       {/*  Add post*/}
       {/*</Button>*/}
       {/*{show && <PostModalForm post={post} onCancel={onCancel} show={show} />}*/}
-      {<ListMui />}
+      {<ListComponent list={list} />}
     </>
   );
 }
