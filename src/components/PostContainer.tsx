@@ -32,6 +32,7 @@ export default function PostContainer() {
 
   return (
     <>
+      <h1>Post list</h1>
       {/*<Button*/}
       {/*  className={'start-button'}*/}
       {/*  onClick={onModalOpen}*/}

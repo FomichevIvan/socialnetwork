@@ -14,19 +14,25 @@ import { AuthForm } from '../components/AuthForm';
 
 export const MainPage = () => {
   const user = useSelector((state: RootState) => state.user.user);
-  const dispatch = useDispatch<AppDispatch>();
 
-  const signOut = () => {
-    dispatch(signOutUserAsync());
-  };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    user && navigate('/posts');
+  }, [user]);
 
   return (
     <>
-      {'Hello Main'}
-      {user ? <Button onClick={signOut}>SignOut</Button> : <AuthForm />}
+      <h1>Starting Page</h1>
+      {!user && <AuthForm />}
     </>
   );
 };
 // как компоновать мои компоненты?(( Я после логинизации планировал перемещать на адрес с постами. Направление на
 // ручку /posts было в компоненте формы аутентификации. Но она размонтируется, как только пявляется юзер (строка 26
-// в этом файле). Значит, такая логика компоновки неверна!
+// в этом файле). я управляю навигацией внутри этого компонета. Значит, такая логика компоновки неверна!
+
+//если я на майнпейдж использую внутренний роутинг компонента, то он не работает. Если я нахожусь в самом
+// компоненте, то работает.
+
+//как разместить общий для всех компонент, типа навбара

@@ -54,9 +54,9 @@ export function AuthForm() {
       clearInput();
     }
   };
-  useEffect(() => {
-    user && navigate('/posts');
-  }, [user]);
+  // useEffect(() => {
+  //   user && navigate('/posts');
+  // }, [user]);
 
   return (
     <>

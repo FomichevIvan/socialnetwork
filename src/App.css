@@ -47,13 +47,23 @@
 }
 
 .container {
-    margin: 20% auto;
+    margin: 10% auto;
     display: flex;
     width: 20%;
     flex-direction: column;
-    height: 30%;
+    
 }
 
 .container input {
     margin: 10px;
+}
+
+.container-top {
+    display: flex;
+    height: 5%;
+
+}
+
+.greet {
+    margin-left: auto;
 }

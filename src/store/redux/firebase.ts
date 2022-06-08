@@ -50,16 +50,6 @@ export const registerUserAsync = createAsyncThunk(
   }
 );
 
-export const signOutUser = () => {
-  signOut(auth)
-    .then(() => {
-      console.log('Signed out');
-    })
-    .catch(error => {
-      console.log(error, 'err');
-    });
-};
-
 export const signOutUserAsync = createAsyncThunk(
   'signOutUser',
   async (_, { rejectWithValue }) => {

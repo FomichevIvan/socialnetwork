@@ -11,6 +11,7 @@ import { auth } from './index';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from './store/redux/store';
 import { signInAsCurrUser } from './store/redux/users';
+import { TopPanel } from './components/TopPanel';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,6 +35,7 @@ function App() {
   }, [user]);
   return (
     <BrowserRouter>
+      <TopPanel />
       <Routes>
         <Route path={'/'} element={<MainPage />} />
         <Route path={'/login'} element={<AuthForm />} />
