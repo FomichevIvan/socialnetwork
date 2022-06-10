@@ -8,8 +8,7 @@ import {
 
 const initialState: IReduxUserState = {
   user: null,
-  error: '',
-  message: '',
+  message: null,
 };
 
 const userSlice = createSlice({
@@ -17,42 +16,38 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     clearErrors: state => {
-      state.error = '';
-      state.message = '';
+      state.message = null;
     },
 
     signInAsCurrUser: (state, { payload }) => {
       state.user = payload;
-      console.log(state.user, 'writing user');
     },
   },
   extraReducers: builder => {
     builder.addCase(registerUserAsync.fulfilled, (state, { payload }) => {
       state.user = payload;
-      state.message = 'Success register!';
-      // console.log(state.user, 'state.user');
-      // localStorage.setItem('user', JSON.stringify(payload.uid));
+      state.message = { type: 'success', message: 'Success register!' };
     });
 
     builder.addCase(registerUserAsync.rejected, (state, { payload }: any) => {
-      state.error = payload;
+      state.message = { type: 'error', message: payload };
     });
 
     builder.addCase(signInUserAsync.fulfilled, (state, { payload }) => {
       state.user = payload;
-
-      state.message = 'Success login!';
-      // localStorage.setItem('user', JSON.stringify(payload.uid));
-      // console.log(payload.uid);
+      state.message = { type: 'success', message: 'Success login!' };
     });
 
     builder.addCase(signInUserAsync.rejected, (state, { payload }: any) => {
-      state.error = payload;
+      state.message = { type: 'error', message: payload };
     });
 
     builder.addCase(signOutUserAsync.fulfilled, state => {
       state.user = null;
-      console.log('aa');
+    });
+
+    builder.addCase(signOutUserAsync.rejected, (state, { payload }: any) => {
+      state.message = { type: 'error', message: payload };
     });
   },
 });

@@ -16,7 +16,7 @@ export const TopPanel = (): ReactElement => {
   };
 
   useEffect(() => {
-    navigate('/');
+    !user && navigate('/');
   }, [user]);
   return (
     <div className="container-top">

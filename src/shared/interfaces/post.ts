@@ -1,5 +1,4 @@
-import { User } from 'firebase/auth';
-import { ListComponent } from '../../components';
+import { AlertProps } from '@mui/material';
 
 export interface IPost {
   userId: string | null;
@@ -23,8 +22,7 @@ export interface IReduxState {
 
 export interface IReduxUserState {
   user: IUser | null;
-  message: string;
-  error: string;
+  message: null | IMessage;
 }
 
 export interface IUser {
@@ -34,11 +32,16 @@ export interface IUser {
   uid: string;
 }
 
-export interface IToast {
-  text: string;
-  severity: string;
-}
-
 export interface IListComponentProps {
   list: IPost[];
+}
+
+export interface ToastExtendedProps extends AlertProps {
+  size?: 'sm' | 'xl';
+  message?: string;
+}
+
+export interface IMessage {
+  type: 'success' | 'info' | 'warning' | 'error';
+  message: string;
 }

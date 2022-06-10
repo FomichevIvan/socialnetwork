@@ -1,15 +1,11 @@
-import { Alert, AlertProps } from '@mui/material';
+import { Alert } from '@mui/material';
+import { ToastExtendedProps } from '../shared/interfaces/post';
 
-export const Toast = (info: AlertProps) => {
-  // как children тут оказались (почему дети и северити в одном объекте инфо приходят)???
-  // как расширить возможные пропсы для компонента с типом из библиотеки (если я хочу передавать и другие данные в
-  // такой компонент)
-  // как унифицировать объект пропсов и передавать общий для всех вариантов (ошибка, успех и тп)?
-  //  как обработать наименования ошибок с firebase
-  const { severity, children } = info;
+export const Toast = (props: ToastExtendedProps) => {
+  const { severity, message } = props;
   return (
     <>
-      <Alert severity={severity}>{children}</Alert>
+      <Alert severity={severity}>{message}</Alert>
     </>
   );
 };
