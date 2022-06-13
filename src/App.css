@@ -47,18 +47,29 @@
 }
 
 .container {
-    margin: 10% auto;
+    margin: 5% auto;
     display: flex;
     width: 20%;
     flex-direction: column;
-    
+
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container input {
     margin: 10px;
 }
 
+.container button {
+    margin: 15px;
+}
+
 .container-top {
+    /*background-color: coral;*/
     display: flex;
     height: 5%;
 
@@ -66,4 +77,58 @@
 
 .greet {
     margin-left: auto;
+}
+
+.main-page-container {
+    display: flex;
+    height: 92vh;
+    flex-direction: column;
+}
+
+.sub-container {
+    display: flex;
+    height: 100%;
+}
+
+.left-container {
+    flex-grow: 1;
+    /*background-color: burlywood;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.right-container {
+    flex-grow: 2;
+    /*background-color: beige;*/
+
+}
+
+.user-bio-cont {
+    display: flex;
+    margin: 5px;
+    /*background-color: #d19dff;*/
+    flex-grow: 1.2;
+}
+
+.photo-cont {
+    /*flex-grow: 1;*/
+    width: 35%;
+    margin: 10px;
+    /*background-color: burlywood;*/
+}
+
+.details-cont {
+    /*flex-grow: 1;*/
+    width: 65%;
+    margin: 10px;
+    /*background-color: burlywood;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-cont {
+    display: flex;
+    flex-grow: 1.7;
+    margin: 5px;
+    /*background-color: cadetblue;*/
 }

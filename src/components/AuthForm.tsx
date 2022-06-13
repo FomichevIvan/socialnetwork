@@ -1,6 +1,6 @@
 import { Button, Input } from '@mui/material';
 import { IUser } from '../shared/interfaces/post';
-import { SyntheticEvent, useState } from 'react';
+import { ReactElement, ReactNode, SyntheticEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/redux/store';
 import { clearErrors } from '../store/redux/users';
@@ -8,7 +8,7 @@ import { clearErrors } from '../store/redux/users';
 import { registerUserAsync, signInUserAsync } from '../store/redux/firebase';
 import { useMatch, useNavigate } from 'react-router-dom';
 
-export function AuthForm() {
+export function AuthForm(): ReactElement {
   const isNew = useMatch('register');
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -66,27 +66,28 @@ export function AuthForm() {
 
   return (
     <>
-      <div className="container">
-        <Input
-          onChange={onChangeEmail}
-          value={email === null || email === undefined ? '' : email}
-          id="email"
-          type="mail"
-          placeholder="email"
-        />
+      <div className="wrapper">
+        <div className="container">
+          <Input
+            onChange={onChangeEmail}
+            value={email === null || email === undefined ? '' : email}
+            id="email"
+            type="mail"
+            placeholder="email"
+          />
 
-        <Input
-          onChange={onChangePassword}
-          value={password === null || password === undefined ? '' : password}
-          id="password"
-          type="password"
-          placeholder="password"
-        />
+          <Input
+            onChange={onChangePassword}
+            value={password === null || password === undefined ? '' : password}
+            id="password"
+            type="password"
+            placeholder="password"
+          />
 
-        <Button disabled={!email || !password} onClick={loginOrSignUpUser}>
-          {isNew ? 'Зарегистрироваться' : 'Войти'}
-        </Button>
-
+          <Button disabled={!email || !password} onClick={loginOrSignUpUser}>
+            {isNew ? 'Зарегистрироваться' : 'Войти'}
+          </Button>
+        </div>
         {isNew ? hasAccount : newUser}
       </div>
     </>

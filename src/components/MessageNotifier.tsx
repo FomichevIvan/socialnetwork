@@ -13,7 +13,7 @@ export const MessageNotifier = (): ReactElement => {
       dispatch(clearErrors());
     }, 2000);
 
-    return () => clearInterval(unsubscribe);
+    return () => clearTimeout(unsubscribe);
   }, [message]);
 
   return <Toast severity={message?.type} message={message?.message} />;
