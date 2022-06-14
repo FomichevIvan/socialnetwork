@@ -9,11 +9,11 @@ export const MessageNotifier = (): ReactElement => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const unsubscribe = setTimeout(() => {
+    const timer = setTimeout(() => {
       dispatch(clearErrors());
     }, 2000);
 
-    return () => clearTimeout(unsubscribe);
+    return () => clearTimeout(timer);
   }, [message]);
 
   return <Toast severity={message?.type} message={message?.message} />;

@@ -1,4 +1,7 @@
 import { AlertProps } from '@mui/material';
+import { InputProps } from '@mui/material/Input/Input';
+import { SyntheticEvent } from 'react';
+import { User } from 'firebase/auth';
 
 export interface IPost {
   userId: string | null;
@@ -44,4 +47,12 @@ export interface ToastExtendedProps extends AlertProps {
 export interface IMessage {
   type: 'success' | 'info' | 'warning' | 'error';
   message: string;
+}
+
+export interface IFileInputProps extends InputProps {
+  onChange: (e: SyntheticEvent) => void;
+}
+
+export interface IFileLoader {
+  setImgUrl: (url: string) => void;
 }

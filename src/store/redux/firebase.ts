@@ -3,8 +3,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IUser } from '../../shared/interfaces/post';
 
 export const signInUserAsync = createAsyncThunk(
   'userSignIn',
@@ -60,3 +62,12 @@ export const signOutUserAsync = createAsyncThunk(
     }
   }
 );
+
+// export const updateUserAsync = createAsyncThunk(
+//     'updateUser',
+//     async function (userProps: any, {rejectWithValue}) {
+//         try {
+//             updateProfile(auth,);
+//         }
+//     }
+// );
