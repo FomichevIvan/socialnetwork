@@ -15,6 +15,10 @@ import { UserBio } from '../components/UserBio';
 import { UserInfo } from '../components/UserInfo';
 
 export const MainPage = (): ReactElement => {
+  const navigate = useNavigate();
+  const click = () => {
+    navigate('/posts');
+  };
   return (
     <div className="main-page-container">
       <div>
@@ -25,7 +29,9 @@ export const MainPage = (): ReactElement => {
           <UserBio />
           <UserInfo />
         </div>
-        <div className="right-container"> какой-то контент</div>
+        <div className="right-container">
+          <Button onClick={click}>Posts</Button>
+        </div>
       </div>
     </div>
   );

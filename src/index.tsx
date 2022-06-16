@@ -17,6 +17,7 @@ const firebaseConfig = {
   storageBucket: 'social-network-ivan.appspot.com',
   messagingSenderId: '1035850542761',
   appId: '1:1035850542761:web:adcbc894483abb2b28c3b8',
+  databaseURL: 'https://social-network-ivan-default-rtdb.firebaseio.com',
 };
 
 const app = initializeApp(firebaseConfig);

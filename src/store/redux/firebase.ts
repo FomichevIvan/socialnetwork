@@ -7,6 +7,8 @@ import {
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IUser } from '../../shared/interfaces/post';
+// import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 export const signInUserAsync = createAsyncThunk(
   'userSignIn',
@@ -22,6 +24,15 @@ export const signInUserAsync = createAsyncThunk(
         password
       );
       const user = userCredential.user;
+
+      const db = getDatabase();
+      const starCountRef = ref(db, 'users/' + user.uid);
+      onValue(starCountRef, snapshot => {
+        const data = snapshot.val();
+
+        // updateStarCount(postElement, data);
+      });
+
       return JSON.parse(JSON.stringify(user));
     } catch (error: any) {
       // return rejectWithValue(JSON.parse(JSON.stringify(error)));
@@ -44,6 +55,11 @@ export const registerUserAsync = createAsyncThunk(
         password
       );
       const user = userCredential.user;
+      const { uid } = user;
+
+      const db = getDatabase();
+      await set(ref(db, 'users/' + uid), { name: 'test1', age: 12 });
+
       return JSON.parse(JSON.stringify(user));
     } catch (error: any) {
       // return rejectWithValue(JSON.parse(JSON.stringify(error)));

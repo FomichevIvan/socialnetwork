@@ -9,9 +9,9 @@ export const FileLoader = (props: IFileLoader): ReactElement => {
     const storage = getStorage();
     const storageRef = ref(storage, self.crypto.randomUUID());
     files &&
-      uploadBytes(storageRef, files[0]).then(() =>
-        getDownloadURL(storageRef).then(url => props.setImgUrl(url))
-      );
+      uploadBytes(storageRef, files[0])
+        .then(() => getDownloadURL(storageRef))
+        .then(url => props.setImgUrl(url));
   };
   return <FileInput onChange={handleFile} />;
 };
