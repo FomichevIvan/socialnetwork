@@ -3,12 +3,18 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IUser } from '../../shared/interfaces/post';
-// import { getDatabase, ref, set } from 'firebase/database';
-import { getDatabase, ref, onValue, set } from 'firebase/database';
+
+import {
+  getDatabase,
+  ref,
+  onValue,
+  set,
+  update,
+  child,
+  get,
+} from 'firebase/database';
 
 export const signInUserAsync = createAsyncThunk(
   'userSignIn',
@@ -23,17 +29,23 @@ export const signInUserAsync = createAsyncThunk(
         email,
         password
       );
-      const user = userCredential.user;
+      const { uid } = userCredential.user;
+      // *** можно ли не добавлять трайкетч во внутренних евейтах, все равно же поймается ошибка
 
-      const db = getDatabase();
-      const starCountRef = ref(db, 'users/' + user.uid);
-      onValue(starCountRef, snapshot => {
-        const data = snapshot.val();
+      const dbRef = ref(getDatabase());
+      let res;
 
-        // updateStarCount(postElement, data);
-      });
+      const userInDB = await get(child(dbRef, `users/${uid}`));
 
-      return JSON.parse(JSON.stringify(user));
+      if (userInDB.exists()) {
+        res = userInDB.val();
+      } else {
+        res = await set(ref(getDatabase(), `users/${uid}`), {
+          name: 'Ivan',
+        });
+      }
+
+      return JSON.parse(JSON.stringify(res));
     } catch (error: any) {
       // return rejectWithValue(JSON.parse(JSON.stringify(error)));
       return rejectWithValue(error.message);
@@ -54,16 +66,23 @@ export const registerUserAsync = createAsyncThunk(
         email,
         password
       );
-      const user = userCredential.user;
-      const { uid } = user;
+      const { uid } = userCredential.user;
 
-      const db = getDatabase();
-      await set(ref(db, 'users/' + uid), { name: 'test1', age: 12 });
+      await set(ref(getDatabase(), `users/${uid}`), {
+        // имитация ошибки БД :  set(ref(getDatabase(undefined, 'll')...
+        email: email,
+        avatar: 'pic',
+      });
 
-      return JSON.parse(JSON.stringify(user));
+      return {
+        // можем ли мы передавать в фулфилд заглушку, так как функция сет возвращает андефайнд и нам нечего
+        // положить в редакс. В случае ошибки в БД или АУС этот ретерн даже не срабатывает
+        email: email,
+        avatar: 'pic',
+      };
     } catch (error: any) {
-      // return rejectWithValue(JSON.parse(JSON.stringify(error)));
-      return rejectWithValue(error.message); // оббработка ошибок на фронте??
+      console.log('catch in register!!!!');
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -79,11 +98,35 @@ export const signOutUserAsync = createAsyncThunk(
   }
 );
 
-// export const updateUserAsync = createAsyncThunk(
-//     'updateUser',
-//     async function (userProps: any, {rejectWithValue}) {
-//         try {
-//             updateProfile(auth,);
-//         }
+// export const signInAndGetData = createAsyncThunk(
+//   'readUser',
+//   async (uid: string, { rejectWithValue }) => {
+//     try {
+//       const db = getDatabase();
+//       const userRef = ref(db, 'users/' + uid);
+//       await onValue(userRef, snapshot => {
+//         const data = snapshot.val();
+//         return data;
+//       });
+//     } catch (e) {
+//       return rejectWithValue(e);
 //     }
+//   }
 // );
+
+export const updateUserAsync = createAsyncThunk(
+  'updateUser',
+  async (userProps: any, { rejectWithValue }) => {
+    const uid = auth.currentUser?.uid;
+    const db = getDatabase();
+
+    const userRef = ref(db, `users/${uid}`);
+
+    try {
+      console.log('update');
+      await update(userRef, userProps);
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  }
+);

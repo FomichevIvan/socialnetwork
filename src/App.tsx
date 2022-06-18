@@ -13,27 +13,47 @@ import { AppDispatch, RootState } from './store/redux/store';
 import { signInAsCurrUser } from './store/redux/users';
 import { TopPanel } from './components/TopPanel';
 import { MessageNotifier } from './components/MessageNotifier';
+import { getDatabase, ref, onValue } from 'firebase/database';
+
+// import { signInAndGetData } from './store/redux/firebase';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.user.user);
+  // console.log(user, 'user in app');
   const message = useSelector((state: RootState) => state.user.message);
+
   const navigate = useNavigate();
+
+  const { currentUser } = auth;
+
+  const getUserData = (uid: string) => {
+    console.log('getting data');
+    const db = getDatabase();
+    const userRef = ref(db, 'users/' + uid);
+    onValue(userRef, snapshot => {
+      const data = snapshot.val();
+      dispatch(signInAsCurrUser(data));
+      data && navigate('/'); // можно ли это назвать решением?
+    });
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
-        const { currentUser } = auth;
-        dispatch(signInAsCurrUser(JSON.parse(JSON.stringify(currentUser))));
-        navigate('/');
+        console.log('if');
+        getUserData(user.uid); // если юзер залогинен в аус, мы получаем его данные из БД
       } else {
+        console.log('else');
         navigate('/login');
       }
     });
     return () => unsubscribe();
-  }, []);
-  // React.lazy(())
-  // const main = React.lazy((): any => import('./pages/MainPage'));
+  }, [currentUser]); // ставлю юзера из редакс - уходим в бесконечный цикл, а в таком виде при ошибке в бд я не
+  // получаю переадресацию в логин
+  // что мне поставить в зависимости или условия внутри ифа, чтобы при наличии аутентификации, но отсутсвии данных в
+  // юзере, пользователь долже был снова логиниться или регаться
+
   return (
     <>
       {message && <MessageNotifier />}
@@ -48,5 +68,7 @@ function App() {
   );
 }
 
-// если юзре залогинен, то мы всегда на '/', никуда не уйти
+// если имитировать ошибку бд, то фактически юзер уже есть в объекте аус (при регистрации нового, например), но
+// из-за ошибки в БД мы не записали юзера в бд и тогда я не могу попасть на компонент входа, но при этом скрыта
+// ТопПанель, словно юзер не вошел.
 export default App;

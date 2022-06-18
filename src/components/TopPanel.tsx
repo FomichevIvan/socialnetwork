@@ -4,26 +4,40 @@ import { AuthForm } from './AuthForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/redux/store';
 import { useNavigate } from 'react-router-dom';
-import { signOutUserAsync } from '../store/redux/firebase';
+import { signOutUserAsync, updateUserAsync } from '../store/redux/firebase';
+import firebase from 'firebase/compat';
+import { auth } from '../index';
 
 export const TopPanel = (): ReactElement => {
   const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
+  const authUser = auth.currentUser;
+  // console.log(authUser, 'authcu');
+
   const signOut = () => {
     dispatch(signOutUserAsync());
   };
 
-  useEffect(() => {
-    !user && navigate('/login');
-  }, [user]);
+  const upd = () => {
+    dispatch(
+      updateUserAsync({
+        start: Date.now(),
+      })
+    );
+  };
+
   return (
     <div className="container-top">
-      {user ? (
+      {authUser ? (
         <>
           <Button onClick={signOut}>SignOut</Button>{' '}
-          <h5 className="greet">{`You logged in as ${user.uid}`}</h5>
+          <Button onClick={upd}>Upd</Button>
+          <Button onClick={() => console.log(user, 'user now')}>
+            User is...
+          </Button>
+          {/*<h5 className="greet">{`You logged in as ${user.uid}`}</h5>*/}
         </>
       ) : (
         <>
