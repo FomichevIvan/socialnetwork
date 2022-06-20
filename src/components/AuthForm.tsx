@@ -1,14 +1,21 @@
 import { Button, Input } from '@mui/material';
 import { IUser } from '../shared/interfaces/post';
-import { ReactElement, ReactNode, SyntheticEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../store/redux/store';
+import {
+  ReactElement,
+  ReactNode,
+  SyntheticEvent,
+  useEffect,
+  useState,
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../store/redux/store';
 import { clearErrors } from '../store/redux/users';
 
 import { registerUserAsync, signInUserAsync } from '../store/redux/firebase';
 import { useMatch, useNavigate } from 'react-router-dom';
 
 export function AuthForm(): ReactElement {
+  const user = useSelector((state: RootState) => state.user.user);
   const isNew = useMatch('register');
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -63,6 +70,10 @@ export function AuthForm(): ReactElement {
       clearInput();
     }
   };
+
+  useEffect(() => {
+    user && navigate('/');
+  }, [user]);
 
   return (
     <>

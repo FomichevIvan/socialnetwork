@@ -6,7 +6,6 @@ import { GrCloudUpload } from 'react-icons/gr';
 export const FileInput = (props: IFileInputProps): ReactElement => {
   return (
     <div className="custom-file-upload-cont">
-      {/*<div style={{ margin: '10px', color: 'grey' }}>Добавить фото профиля</div>*/}
       <label
         onChange={props.onChange}
         htmlFor="file-upload"

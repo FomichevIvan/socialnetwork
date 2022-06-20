@@ -37,7 +37,7 @@ export const TopPanel = (): ReactElement => {
           <Button onClick={() => console.log(user, 'user now')}>
             User is...
           </Button>
-          {/*<h5 className="greet">{`You logged in as ${user.uid}`}</h5>*/}
+          <h5 className="greet">{`You logged in as ${user?.name}`}</h5>
         </>
       ) : (
         <>

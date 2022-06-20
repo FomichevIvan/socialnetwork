@@ -56,10 +56,11 @@ const userSlice = createSlice({
     });
 
     builder.addCase(updateUserAsync.fulfilled, (state, { payload }: any) => {
-      console.log(payload, 'userUpd');
+      console.log(payload, 'userUpd'); // приходит андефайнд, хоть и успех
     });
 
     builder.addCase(updateUserAsync.rejected, (state, { payload }: any) => {
+      console.log(payload, 'error');
       state.message = { type: 'error', message: payload };
     });
 

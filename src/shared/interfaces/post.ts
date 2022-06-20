@@ -29,7 +29,7 @@ export interface IReduxUserState {
 }
 
 export interface IUser {
-  displayName: string;
+  name: string;
   email: string;
   password: string;
   uid: string;
