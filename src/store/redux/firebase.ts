@@ -6,16 +6,7 @@ import {
 } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import {
-  getDatabase,
-  ref,
-  onValue,
-  set,
-  update,
-  child,
-  get,
-} from 'firebase/database';
-import { signInAsCurrUser } from './users';
+import { getDatabase, ref, set, update, child, get } from 'firebase/database';
 
 export const signInUserAsync = createAsyncThunk(
   'userSignIn',
@@ -31,22 +22,10 @@ export const signInUserAsync = createAsyncThunk(
         password
       );
       const { uid } = userCredential.user;
-      // *** можно ли не добавлять трайкетч во внутренних евейтах, все равно же поймается ошибка?
-
       const dbRef = ref(getDatabase());
-      let res;
-
-      const userInDB = await get(child(dbRef, `users/${uid}`));
-
-      if (userInDB.exists()) {
-        res = userInDB.val();
-      } else {
-        res = await set(ref(getDatabase(), `users/${uid}`), {
-          name: 'Ivan',
-        });
-      }
-
-      return JSON.parse(JSON.stringify(res));
+      const response = await get(child(dbRef, `users/${uid}`));
+      const userData = response.val();
+      return JSON.parse(JSON.stringify(userData));
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -69,19 +48,25 @@ export const registerUserAsync = createAsyncThunk(
       const { uid } = userCredential.user;
 
       await set(ref(getDatabase(), `users/${uid}`), {
-        // имитация ошибки БД :  set(ref(getDatabase(undefined, 'll')...
         email: email,
-        avatar: 'pic',
+        avatar:
+          'https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/96c3bbca-054f-4bfc-9b66-c7f016f8c8ca?alt=media&token=6621a3cf-eee6-4167-b850-65d863b339e1',
+
+        name: 'Anon',
+        lastName: 'Well-Known',
+        city: 'SomewhereBurg',
       });
 
       return {
-        // можем ли мы передавать в фулфилд заглушку, так как функция сет возвращает андефайнд и нам нечего
-        // положить в редакс. Это не проблема, ведь в случае ошибки в БД или АУС этот ретерн даже не срабатывает
         email: email,
-        avatar: 'pic',
+        avatar:
+          'https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/96c3bbca-054f-4bfc-9b66-c7f016f8c8ca?alt=media&token=6621a3cf-eee6-4167-b850-65d863b339e1',
+
+        name: 'Anon',
+        lastName: 'Well-Known',
+        city: 'SomewhereBurg',
       };
     } catch (error: any) {
-      console.log('catch in register!!!!');
       return rejectWithValue(error.message);
     }
   }
@@ -107,13 +92,9 @@ export const updateUserAsync = createAsyncThunk(
       const db = getDatabase();
       const userRef = ref(db, `users/${uid}`);
       await update(userRef, updates);
-      return updates; // либо я неправильно получаю резльтат апдейт, либо он срабатывает раньше, чем получаем
-      // данные, но я в фуллфилд передаю постоянно андефайнд, если делаю return await update(userRef, userProps);
+      return updates;
     } catch (e: any) {
-      console.dir(e, 'hi');
-      return rejectWithValue(e.message); // почему не могу залогать ошибку из кетч?, не могу передать ее в реджектед,
-      // чтобы
-      // отобразить в Тоаст?
+      return rejectWithValue(e.message);
     }
   }
 );

@@ -1,7 +1,6 @@
 import { AlertProps } from '@mui/material';
 import { InputProps } from '@mui/material/Input/Input';
 import { SyntheticEvent } from 'react';
-import { User } from 'firebase/auth';
 
 export interface IPost {
   userId: string | null;
@@ -29,10 +28,16 @@ export interface IReduxUserState {
 }
 
 export interface IUser {
-  name: string;
-  email: string;
-  password: string;
   uid: string;
+  avatar: string;
+  name: string;
+  lastName: string;
+  city: string;
+  email: string;
+  images: string[];
+  favorites: string[];
+  friends: string[];
+  posts: IPost[];
 }
 
 export interface IListComponentProps {

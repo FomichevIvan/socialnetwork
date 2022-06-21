@@ -1,25 +1,38 @@
-import { ReactElement, ReactNode, SyntheticEvent, useState } from 'react';
-import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { ReactElement, useState } from 'react';
 
-import { Button } from '@mui/material';
-import { FileInput } from '../ui-kit/FileInput';
 import { FileLoader } from './FileLoader';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../store/redux/store';
+import { updateUserAsync } from '../store/redux/firebase';
 
 export const UserBio = (): ReactElement => {
-  const [photo, setPhoto] = useState<string>('');
+  const user = useSelector((state: RootState) => state.user.user);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const onUpdUserAvatar = (url: string): void => {
+    dispatch(
+      updateUserAsync({
+        avatar: url,
+      })
+    );
+  };
 
   return (
     <div className="user-bio-cont">
       <div className="photo-cont">
-        {photo ? (
-          <img className="photo" src={photo} />
-        ) : (
-          <FileLoader setImgUrl={setPhoto} />
-        )}
+        <img className="photo" src={user?.avatar} />
+        <FileLoader setImgUrl={onUpdUserAvatar} />
       </div>
       <div className="details-cont">
-        <div>Деталь два</div>
-        <div>Деталь три</div>
+        <div>
+          <h3>Name: {user?.name}</h3>
+        </div>
+        <div>
+          <h3> Last name: {user?.lastName}</h3>
+        </div>
+        <div>
+          <h3> City: {user?.city}</h3>
+        </div>
       </div>
     </div>
   );
