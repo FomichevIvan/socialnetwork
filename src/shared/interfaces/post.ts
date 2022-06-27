@@ -25,6 +25,7 @@ export interface IReduxState {
 export interface IReduxUserState {
   user: IUser | null;
   message: null | IMessage;
+  loading: boolean;
 }
 
 export interface IUser {
@@ -38,6 +39,12 @@ export interface IUser {
   favorites: string[];
   friends: string[];
   posts: IPost[];
+}
+
+export interface IUserFields {
+  name: string;
+  lastName: string;
+  city: string;
 }
 
 export interface IListComponentProps {
@@ -60,4 +67,27 @@ export interface IFileInputProps extends InputProps {
 
 export interface IFileLoader {
   setImgUrl: (url: string) => void;
+}
+
+export interface IInformationBlock {
+  clickedField: string;
+  textInputData: string;
+  edit: boolean;
+  textFieldData: string | undefined;
+  label: string;
+  show: boolean;
+  thisFieldName: string;
+  onChangeInput: (e: SyntheticEvent) => void;
+  onEdit: (e: SyntheticEvent) => void;
+  onSave: (e: SyntheticEvent) => void;
+}
+
+export interface ITextInputProps {
+  text: string | undefined;
+  onChangeInput: (e: SyntheticEvent) => void;
+}
+
+export interface ITextFieldProps {
+  text: string | undefined;
+  label: string;
 }

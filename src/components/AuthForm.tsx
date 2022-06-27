@@ -1,12 +1,5 @@
 import { Button, Input } from '@mui/material';
-import { IUser } from '../shared/interfaces/post';
-import {
-  ReactElement,
-  ReactNode,
-  SyntheticEvent,
-  useEffect,
-  useState,
-} from 'react';
+import { ReactElement, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/redux/store';
 import { clearErrors } from '../store/redux/users';
@@ -48,14 +41,14 @@ export function AuthForm(): ReactElement {
   };
 
   const hasAccount = (
-    <div>
+    <div className="flex-block">
       <h4>Уже есть аккаунт? Тогда</h4>
       <Button onClick={userIsExisted}> Войти </Button>
     </div>
   );
 
   const newUser = (
-    <div>
+    <div className="flex-block">
       <h4>Создать новый аккаунт?</h4>
       <Button onClick={userIsNew}> Зарегистрироваться </Button>
     </div>

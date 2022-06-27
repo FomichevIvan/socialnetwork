@@ -1,23 +1,11 @@
-import { ReactElement } from 'react';
-import { FiEdit, FiSave } from 'react-icons/fi';
-
-interface ITextFieldProps {
-  text: string | undefined;
-  label: string;
-}
+import { ReactElement, SyntheticEvent } from 'react';
+import { ITextFieldProps } from '../shared/interfaces/post';
 
 export const TextField = ({ text, label }: ITextFieldProps): ReactElement => {
   return (
-    <div>
-      {label} : {text}
-      <div className="edit-block">
-        <i>
-          <FiEdit />
-        </i>
-        <i>
-          <FiSave />
-        </i>
-      </div>
+    <div className="text-field">
+      <div className="text-field-label">{label}:</div>
+      <div className="text-field-text">{text}</div>
     </div>
   );
 };

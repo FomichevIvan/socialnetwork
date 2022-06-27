@@ -11,6 +11,7 @@ import {
 const initialState: IReduxUserState = {
   user: null,
   message: null,
+  loading: true,
 };
 
 const userSlice = createSlice({
@@ -23,6 +24,11 @@ const userSlice = createSlice({
 
     signInAsCurrUser: (state, { payload }) => {
       state.user = payload;
+      state.loading = false;
+    },
+
+    showLoading: (state, { payload }) => {
+      state.loading = payload;
     },
   },
   extraReducers: builder => {
@@ -56,7 +62,8 @@ const userSlice = createSlice({
     });
 
     builder.addCase(updateUserAsync.fulfilled, (state, { payload }: any) => {
-      console.log(payload, 'userUpd'); // приходит андефайнд, хоть и успех
+      state.user = { ...state.user, ...payload };
+      state.loading = false;
     });
 
     builder.addCase(updateUserAsync.rejected, (state, { payload }: any) => {
@@ -70,6 +77,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { clearErrors, signInAsCurrUser } = userSlice.actions;
+export const { clearErrors, signInAsCurrUser, showLoading } = userSlice.actions;
 
 export default userSlice.reducer;

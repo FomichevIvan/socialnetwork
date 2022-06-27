@@ -50,7 +50,7 @@ export const registerUserAsync = createAsyncThunk(
       await set(ref(getDatabase(), `users/${uid}`), {
         email: email,
         avatar:
-          'https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/96c3bbca-054f-4bfc-9b66-c7f016f8c8ca?alt=media&token=6621a3cf-eee6-4167-b850-65d863b339e1',
+          'https://i1.sndcdn.com/avatars-000495007683-zg65ko-t500x500.jpg',
 
         name: 'Anon',
         lastName: 'Well-Known',
@@ -60,7 +60,7 @@ export const registerUserAsync = createAsyncThunk(
       return {
         email: email,
         avatar:
-          'https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/96c3bbca-054f-4bfc-9b66-c7f016f8c8ca?alt=media&token=6621a3cf-eee6-4167-b850-65d863b339e1',
+          'https://i1.sndcdn.com/avatars-000495007683-zg65ko-t500x500.jpg',
 
         name: 'Anon',
         lastName: 'Well-Known',
