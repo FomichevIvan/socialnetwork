@@ -55,7 +55,6 @@ export const MainPage = (): ReactElement => {
             <UserInfo />
           </div>
           <div className="right-container">
-            <ContentNavbar />
             <Routes>
               <Route index element={<Layout />} />
               <Route path="posts" element={<PostsPage />} />

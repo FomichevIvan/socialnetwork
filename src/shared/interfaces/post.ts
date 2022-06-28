@@ -66,6 +66,7 @@ export interface IFileInputProps extends InputProps {
 }
 
 export interface IFileLoader {
+  currUrl: string | undefined;
   setImgUrl: (url: string) => void;
 }
 

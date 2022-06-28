@@ -1,5 +1,10 @@
-import { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
+import { ContentNavbar } from './ContentNavbar';
 
 export const UserInfo = (): ReactElement => {
-  return <div className="user-info-cont"> прочая полезная фигня про юзера</div>;
+  return (
+    <div className="user-info-cont">
+      <ContentNavbar />
+    </div>
+  );
 };

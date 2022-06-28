@@ -11,7 +11,7 @@ export const ContentNavbar = (): ReactElement => {
   };
   return (
     <>
-      <div className="right-container-navbar">
+      <div className="container-navbar">
         <Button id="posts" onClick={headTo}>
           Posts
         </Button>

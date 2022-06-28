@@ -54,10 +54,10 @@ export const UserBio = (): ReactElement => {
   return (
     <div className="user-bio-cont">
       <div className="photo-cont">
-        <div>
+        <div className="photo-cover">
           {!loading ? <img className="photo" src={user?.avatar} /> : <Loader />}
         </div>
-        <FileLoader setImgUrl={onChangeAvatar} />
+        <FileLoader setImgUrl={onChangeAvatar} currUrl={user?.avatar} />
       </div>
       <div className="details-cont">
         <InformationBlock

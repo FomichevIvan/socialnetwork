@@ -16,5 +16,9 @@ export const MessageNotifier = (): ReactElement => {
     return () => clearTimeout(timer);
   }, [message]);
 
-  return <Toast severity={message?.type} message={message?.message} />;
+  return (
+    <div className="toast-container">
+      <Toast severity={message?.type} message={message?.message} />
+    </div>
+  );
 };
