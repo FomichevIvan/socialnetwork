@@ -29,6 +29,7 @@ export const UserBio = (): ReactElement => {
   };
   const onEdit = (e: SyntheticEvent) => {
     const { id } = e.target as HTMLButtonElement;
+    console.log({ id });
     user && setData(user[id as keyof IUserFields]);
     setField(id);
     id && setEdit(edit => !edit);
@@ -45,6 +46,7 @@ export const UserBio = (): ReactElement => {
   };
 
   const onUpdate = (e: SyntheticEvent) => {
+    console.log({ field });
     const updates = { [field]: data };
     onChangeField(updates);
     setEdit(edit => !edit);
