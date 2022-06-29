@@ -131,19 +131,22 @@
     align-items: center;
     position: relative;
     width: 90%;
-    height: 90%;
+    height: 100%;
     margin: 1%;
     /*margin: 10px;*/
     /*border: 1px solid black;*/
+    border-radius: 5%;
+    background-color: #e7e7e7;
 }
 
 .details-cont {
     margin: 1%;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     width: 90%;
     /*margin: 10px;*/
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     /*height: 90%;*/
 }
 
@@ -219,6 +222,7 @@ input[type="file"] {
     flex-direction: row;
     align-items: center;
     height: 40px;
+    overflow-wrap: break-word;
 }
 
 .edit-block {
@@ -242,10 +246,6 @@ input[type="file"] {
 }
 
 .loader {
-    /*position: absolute;*/
-    /*top: -170px;*/
-    /*left: 100px;*/
-    /*height: 100vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,7 +260,7 @@ input[type="file"] {
     margin-right: 10px;
     width: 60%;
     color: #4f5483;
-    text-align: end;
+    /*text-align: end;*/
 }
 
 .text-field-text {

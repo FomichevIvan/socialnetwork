@@ -79,7 +79,7 @@ export interface IInformationBlock {
   show: boolean;
   thisFieldName: string;
   onChangeInput: (e: SyntheticEvent) => void;
-  onEdit: (e: SyntheticEvent) => void;
+  onEdit: (name: string) => void;
   onSave: (e: SyntheticEvent) => void;
 }
 

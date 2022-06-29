@@ -7,7 +7,7 @@ interface IEditBlockProps {
   field: string;
   edit: boolean;
   name: string;
-  onEdit: (e: SyntheticEvent) => void;
+  onEdit: (name: string) => void;
   onSave: (e: SyntheticEvent) => void;
 }
 
@@ -21,10 +21,8 @@ export const EditBlock = ({
 }: IEditBlockProps): ReactElement => {
   return (
     <div className={`edit-block${show || field === name ? '' : '-hidden'}`}>
-      <IconButton onClick={onEdit}>
-        <i>
-          <FiEdit id={name} size={20} />
-        </i>
+      <IconButton onClick={() => onEdit(name)}>
+        <FiEdit size={20} />
       </IconButton>
       <IconButton onClick={onSave}>
         <i>

@@ -27,13 +27,13 @@ export const UserBio = (): ReactElement => {
       })
     );
   };
-  const onEdit = (e: SyntheticEvent) => {
-    const { id } = e.target as HTMLButtonElement;
-    console.log({ id });
-    user && setData(user[id as keyof IUserFields]);
-    setField(id);
-    id && setEdit(edit => !edit);
-    id && setShow(show => !show);
+  const onEdit = (name: string) => {
+    // const { id } = e.target as HTMLButtonElement;
+    // console.log({ id });
+    user && setData(user[name as keyof IUserFields]);
+    setField(name);
+    name && setEdit(edit => !edit);
+    name && setShow(show => !show);
   };
 
   const onChangeField = (updates: { [key: string]: string }): void => {
