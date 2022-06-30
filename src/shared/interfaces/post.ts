@@ -80,7 +80,7 @@ export interface IInformationBlock {
   thisFieldName: string;
   onChangeInput: (e: SyntheticEvent) => void;
   onEdit: (name: string) => void;
-  onSave: (e: SyntheticEvent) => void;
+  onSave: () => void;
 }
 
 export interface ITextInputProps {

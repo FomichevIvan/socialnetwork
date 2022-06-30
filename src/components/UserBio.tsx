@@ -30,10 +30,10 @@ export const UserBio = (): ReactElement => {
   const onEdit = (name: string) => {
     // const { id } = e.target as HTMLButtonElement;
     // console.log({ id });
-    user && setData(user[name as keyof IUserFields]);
+    user && name && setData(user[name as keyof IUserFields]);
     setField(name);
-    name && setEdit(edit => !edit);
-    name && setShow(show => !show);
+    setEdit(edit => !edit);
+    setShow(show => !show);
   };
 
   const onChangeField = (updates: { [key: string]: string }): void => {
@@ -45,10 +45,11 @@ export const UserBio = (): ReactElement => {
     setData(value);
   };
 
-  const onUpdate = (e: SyntheticEvent) => {
-    console.log({ field });
-    const updates = { [field]: data };
-    onChangeField(updates);
+  const onUpdate = () => {
+    if (field) {
+      const updates = { [field]: data };
+      onChangeField(updates);
+    }
     setEdit(edit => !edit);
     setShow(show => !show);
   };

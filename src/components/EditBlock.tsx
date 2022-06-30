@@ -1,4 +1,5 @@
 import { FiEdit, FiSave } from 'react-icons/fi';
+import { MdOutlineCancel } from 'react-icons/md';
 import { ReactElement, SyntheticEvent } from 'react';
 import { Button, IconButton } from '@mui/material';
 
@@ -8,7 +9,7 @@ interface IEditBlockProps {
   edit: boolean;
   name: string;
   onEdit: (name: string) => void;
-  onSave: (e: SyntheticEvent) => void;
+  onSave: () => void;
 }
 
 export const EditBlock = ({
@@ -22,12 +23,10 @@ export const EditBlock = ({
   return (
     <div className={`edit-block${show || field === name ? '' : '-hidden'}`}>
       <IconButton onClick={() => onEdit(name)}>
-        <FiEdit size={20} />
+        {edit ? <MdOutlineCancel size={20} /> : <FiEdit size={20} />}
       </IconButton>
-      <IconButton onClick={onSave}>
-        <i>
-          <FiSave id={name} size={20} />
-        </i>
+      <IconButton disabled={!edit} onClick={onSave}>
+        <FiSave size={20} />
       </IconButton>
       {/*<Button id={name} onClick={onEdit}>*/}
       {/*  {edit ? 'Cancel' : 'Edit'}*/}

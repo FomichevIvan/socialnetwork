@@ -12,13 +12,13 @@ export const ContentNavbar = (): ReactElement => {
   return (
     <>
       <div className="container-navbar">
-        <Button id="posts" onClick={headTo}>
+        <Button fullWidth={true} id="posts" onClick={headTo}>
           Posts
         </Button>
-        <Button id="photo" onClick={headTo}>
+        <Button fullWidth={true} id="photo" onClick={headTo}>
           Photos
         </Button>
-        <Button id="groups" onClick={headTo}>
+        <Button fullWidth={true} id="groups" onClick={headTo}>
           Groups
         </Button>
       </div>
