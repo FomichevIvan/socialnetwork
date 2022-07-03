@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ListComponent } from './index';
+import { NewListComp } from './index';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../store/redux/store';
 import { changeFlag, loadAllPosts, setCurPost } from '../store/redux/posts';
+import postArray from '../utils/postArray.json';
 
 import { Button, Divider, List } from '@mui/material';
 import { PostModalForm } from './index';
@@ -26,13 +27,11 @@ export default function PostContainer() {
     dispatch(setCurPost({ id: null, userId: null, title: '', body: '' }));
   };
 
-  useEffect(() => {
-    user.user && dispatch(loadAllPosts());
-  }, [user.user]);
-
   return (
     <>
-      <h1>Post list</h1>
+      <div className="header-container">
+        <h1>Post list</h1>
+      </div>
       {/*<Button*/}
       {/*  className={'start-button'}*/}
       {/*  onClick={onModalOpen}*/}
@@ -41,7 +40,7 @@ export default function PostContainer() {
       {/*  Add post*/}
       {/*</Button>*/}
       {/*{show && <PostModalForm post={post} onCancel={onCancel} show={show} />}*/}
-      {<ListComponent list={list} />}
+      {<NewListComp list={list} />}
     </>
   );
 }

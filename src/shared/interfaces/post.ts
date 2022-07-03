@@ -10,6 +10,15 @@ export interface IPost {
   _id?: string | null;
 }
 
+export interface INewPost {
+  userId: string | null;
+  id: string | null;
+  title: string;
+  body: string;
+  avatar: string;
+  photo: string;
+}
+
 export interface IPostModalProps {
   post: IPost;
   onCancel: () => void;
@@ -17,9 +26,9 @@ export interface IPostModalProps {
 }
 
 export interface IReduxState {
-  posts: IPost[];
+  posts: INewPost[];
   show: boolean;
-  curPost: IPost;
+  curPost: INewPost;
 }
 
 export interface IReduxUserState {
@@ -48,7 +57,7 @@ export interface IUserFields {
 }
 
 export interface IListComponentProps {
-  list: IPost[];
+  list: INewPost[];
 }
 
 export interface ToastExtendedProps extends AlertProps {

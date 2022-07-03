@@ -28,13 +28,6 @@ export const EditBlock = ({
       <IconButton disabled={!edit} onClick={onSave}>
         <FiSave size={20} />
       </IconButton>
-      {/*<Button id={name} onClick={onEdit}>*/}
-      {/*  {edit ? 'Cancel' : 'Edit'}*/}
-      {/*</Button>*/}
-
-      {/*<Button disabled={!edit} onClick={onSave}>*/}
-      {/*  Save*/}
-      {/*</Button>*/}
     </div>
   );
 };

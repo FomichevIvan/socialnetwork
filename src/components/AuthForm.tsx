@@ -93,6 +93,7 @@ export function AuthForm(): ReactElement {
           </Button>
         </div>
         {isNew ? hasAccount : newUser}
+        <div className="red-circle"></div>
       </div>
     </>
   );

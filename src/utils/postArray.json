@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "userId": "g234253423",
+    "title": "Post about love",
+    "body": "Let me tell you about love",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  },
+  {
+    "id": "2",
+    "userId": "f23425qfdas3423",
+    "title": "Something went wrong",
+    "body": "Something always went wrong, it was an usual thing",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/15dd1e55-837c-42a9-8ce7-df9e75d7e072?alt=media&token=c4a1d21d-45e6-4590-883d-10241435f396"
+  },
+  {
+    "id": "3",
+    "userId": "2asdfa34253423",
+    "title": "Be happy",
+    "body": "Let be happy guys!",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  },
+  {
+    "id": "4",
+    "userId": "a23425342asdf3",
+    "title": "Due pandemic",
+    "body": "People are crazy about this!!",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  },
+  {
+    "id": "5",
+    "userId": "2342gsdfgsdaf53423",
+    "title": "Hilarious",
+    "body": "Even if I knew...",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  },
+  {
+    "id": "6",
+    "userId": "2a34asdfa253423",
+    "title": "Literally the best",
+    "body": "Bestest most testest!",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  }
+]

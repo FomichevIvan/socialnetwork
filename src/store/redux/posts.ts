@@ -5,7 +5,14 @@ import { getUrl } from '../../shared/utils/endpoints';
 const initialState: IReduxState = {
   posts: [],
   show: false,
-  curPost: { id: null, userId: null, title: '', body: '' }, //????
+  curPost: {
+    id: null,
+    userId: null,
+    title: '',
+    body: '',
+    avatar: '',
+    photo: '',
+  }, //????
 };
 
 export const loadAllPosts = createAsyncThunk(
@@ -91,13 +98,24 @@ const postSlice = createSlice({
       state.curPost = action.payload;
     },
 
+    getPostsSync: (state, { payload }) => {
+      state.posts = payload;
+    },
+
     saveEditedPost: (state, action) => {
       state.posts = state.posts.map((el: IPost) => {
         if (el.id === action.payload.id) {
           return (el = action.payload);
         } else return el;
       });
-      state.curPost = { id: null, userId: null, title: '', body: '' };
+      state.curPost = {
+        id: null,
+        userId: null,
+        title: '',
+        body: '',
+        avatar: '',
+        photo: '',
+      };
     },
   },
   extraReducers: builder => {
@@ -124,10 +142,17 @@ const postSlice = createSlice({
         ...action.payload,
         id: action.payload._id.toString(),
       };
-      state.curPost = { id: null, userId: null, title: '', body: '' };
+      state.curPost = {
+        id: null,
+        userId: null,
+        title: '',
+        body: '',
+        avatar: '',
+        photo: '',
+      };
     });
   },
 });
 
-export const { changeFlag, setCurPost } = postSlice.actions;
+export const { changeFlag, setCurPost, getPostsSync } = postSlice.actions;
 export default postSlice.reducer;
