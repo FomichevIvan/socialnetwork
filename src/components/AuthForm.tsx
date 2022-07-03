@@ -42,14 +42,14 @@ export function AuthForm(): ReactElement {
 
   const hasAccount = (
     <div className="flex-block">
-      <h4>Уже есть аккаунт? Тогда</h4>
+      <span>Уже есть аккаунт? Тогда</span>
       <Button onClick={userIsExisted}> Войти </Button>
     </div>
   );
 
   const newUser = (
     <div className="flex-block">
-      <h4>Создать новый аккаунт?</h4>
+      <span>Создать новый аккаунт?</span>
       <Button onClick={userIsNew}> Зарегистрироваться </Button>
     </div>
   );
@@ -93,7 +93,9 @@ export function AuthForm(): ReactElement {
           </Button>
         </div>
         {isNew ? hasAccount : newUser}
-        <div className="red-circle"></div>
+        <div className="red-circle">
+          <span>hi! ;)</span>
+        </div>
       </div>
     </>
   );

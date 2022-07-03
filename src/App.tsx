@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from './store/redux/store';
 import { TopPanel } from './components/TopPanel';
 import { MessageNotifier } from './components/MessageNotifier';
+import { Loader } from './components/Loader';
 
 function App() {
   const user = useSelector((state: RootState) => state.user.user);
@@ -36,3 +37,4 @@ export default App;
 
 // передача пропсами на один уровень вниз (массив постов, например), или лучше брать из редакс?
 // как из айди пользователя делать имя без особых затрат
+// избежать мелькания экрана при неверном маршруте на главном экране Апп
