@@ -1,6 +1,7 @@
 import React, { ReactElement, SyntheticEvent } from 'react';
 import { Button, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { MenuButton } from '../ui-kit/MenuButton';
 
 export const ContentNavbar = (): ReactElement => {
   const navigate = useNavigate();
@@ -11,48 +12,56 @@ export const ContentNavbar = (): ReactElement => {
   };
   return (
     <>
-      {/*<div className="container-navbar">*/}
-      {/*  <Button fullWidth={true} id="" onClick={headTo}>*/}
-      {/*    Home*/}
-      {/*  </Button>*/}
-      {/*  <Button fullWidth={true} id="posts" onClick={headTo}>*/}
-      {/*    Posts*/}
-      {/*  </Button>*/}
-      {/*  <Button fullWidth={true} id="photo" onClick={headTo}>*/}
-      {/*    Photos*/}
-      {/*  </Button>*/}
-      {/*  <Button fullWidth={true} id="groups" onClick={headTo}>*/}
-      {/*    Groups*/}
-      {/*  </Button>*/}
-      {/*</div>*/}
-
-      <Grid
-        container
-        rowSpacing={8}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        // xs={12}
-      >
-        <Grid item xs={6} className="menu-button">
-          <Button fullWidth={true} id="" onClick={headTo}>
-            Home
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-          <Button fullWidth={true} id="posts" onClick={headTo}>
-            Posts
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-          <Button fullWidth={true} id="photo" onClick={headTo}>
-            Photos
-          </Button>
-        </Grid>
-        <Grid item xs={6} className="menu-button">
-          <Button fullWidth={true} id="groups" onClick={headTo}>
-            Groups
-          </Button>
-        </Grid>
-      </Grid>
+      <div className="container-navbar">
+        <div className="inner-container-navbar">
+          <div className="menu-button">
+            <MenuButton
+              fontColor="black"
+              text="Home"
+              background="#FF8CCD"
+              containerBckgr="#FFBFDC"
+              textColor="white"
+              onClick={headTo}
+              id=""
+            />
+          </div>
+          <div>
+            <MenuButton
+              fontColor="black"
+              text="Posts"
+              background="#FFA68C"
+              containerBckgr="#FFCDBF"
+              textColor="white"
+              onClick={headTo}
+              id="posts"
+            />
+          </div>
+        </div>
+        <div className="inner-container-navbar">
+          <div>
+            <MenuButton
+              fontColor="black"
+              text="Photos"
+              background="#B199FF"
+              containerBckgr="#D4C6FF"
+              textColor="white"
+              onClick={headTo}
+              id="photo"
+            />
+          </div>
+          <div className="menu-button">
+            <MenuButton
+              fontColor="black"
+              text="Groups"
+              background="#98B7FF"
+              containerBckgr="#C6D7FF"
+              textColor="white"
+              onClick={headTo}
+              id="groups"
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

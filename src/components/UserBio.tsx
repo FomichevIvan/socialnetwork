@@ -28,8 +28,6 @@ export const UserBio = (): ReactElement => {
     );
   };
   const onEdit = (name: string) => {
-    // const { id } = e.target as HTMLButtonElement;
-    // console.log({ id });
     user && name && setData(user[name as keyof IUserFields]);
     setField(name);
     setEdit(edit => !edit);
