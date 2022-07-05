@@ -2,8 +2,8 @@ export const Layout = () => {
   return (
     <div
       style={{
-        marginTop: '1%',
-        height: '96%',
+        marginTop: '.7%',
+        height: '96.5%',
         width: '90%',
         display: 'flex',
         justifyContent: 'center',

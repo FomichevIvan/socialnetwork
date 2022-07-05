@@ -12,7 +12,7 @@ export const FileInput = (props: IFileInputProps): ReactElement => {
         className="custom-file-upload"
       >
         <i>
-          <GrCloudUpload size="40" opacity=".5" />
+          <GrCloudUpload size="35" opacity=".3" />
         </i>
 
         <Input id="file-upload" type="file" />
