@@ -7,7 +7,7 @@ import { Post } from './Post';
 
 export function ListComponent({ list }: IListComponentProps) {
   return (
-    <Box sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}>
+    <Box sx={{ width: '100%', maxWidth: 700 }}>
       {list?.map(
         ({ userId, title, body, id }: IPost): ReactElement => (
           <Post key={id} title={title} body={body} userId={userId} id={id} />

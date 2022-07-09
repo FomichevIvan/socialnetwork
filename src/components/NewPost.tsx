@@ -40,18 +40,6 @@ export function NewPost({
   avatar,
   photo,
 }: INewPost): ReactElement {
-  const [expanded, setExpanded] = useState<boolean>(false);
-  const handleExpandClick = () => setExpanded(expanded => !expanded);
-  const ExpandMore = styled((props: ExpandMoreProps) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-  })(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  }));
   // const dispatch = useDispatch<AppDispatch>();
   //
   // const onDelete = () => {
@@ -77,35 +65,29 @@ export function NewPost({
       />
 
       <CardMedia
-        sx={{ objectFit: 'scale-down' }}
+        sx={{ objectFit: 'cover' }}
         component="img"
         height="200"
         image={photo}
       />
 
-      <CardActions disableSpacing>
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {body}
+        </Typography>
+      </CardContent>
+
+      <CardActions
+        sx={{ display: 'flex', justifyContent: 'end' }}
+        disableSpacing
+      >
         <IconButton aria-label="add to favorites">
           <MdOutlineFavoriteBorder />
         </IconButton>
         <IconButton aria-label="share">
           <MdShare />
         </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <MdExpandMore />
-        </ExpandMore>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {body}
-          </Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }

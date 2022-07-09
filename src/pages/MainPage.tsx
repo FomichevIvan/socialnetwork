@@ -16,6 +16,7 @@ import { Layout } from '../components/Layout';
 import { ContentNavbar } from '../components/ContentNavbar';
 import { NotFound } from '../components/NotFound';
 import { Loader } from '../components/Loader';
+import { AuthRequired } from '../components/AuthRequired';
 
 export const MainPage = (): ReactElement => {
   const loading = useSelector((state: RootState) => state.user.loading);
@@ -48,23 +49,25 @@ export const MainPage = (): ReactElement => {
   }, [currentUser]);
   return (
     <>
-      <div className="main-page-container">
-        <div className="sub-container">
-          <div className="left-container">
-            <UserBio />
-            <UserInfo />
-          </div>
-          <div className="right-container">
-            <Routes>
-              <Route index element={<Layout />} />
-              <Route path="posts" element={<PostsPage />} />
-              <Route path="photo" element={<UserPhotoPage />} />
-              <Route path="groups" element={<GroupsPage />} />
-              <Route path={'*'} element={<NotFound />} />
-            </Routes>
+      {!loading && (
+        <div className="main-page-container">
+          <div className="sub-container">
+            <div className="left-container">
+              <UserBio />
+              <UserInfo />
+            </div>
+            <div className="right-container">
+              <Routes>
+                <Route index element={<Layout />} />
+                <Route path="posts" element={<PostsPage />} />
+                <Route path="photo" element={<UserPhotoPage />} />
+                <Route path="groups" element={<GroupsPage />} />
+                <Route path={'*'} element={<NotFound />} />
+              </Routes>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

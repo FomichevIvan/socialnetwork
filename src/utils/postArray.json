@@ -46,5 +46,29 @@
     "body": "Bestest most testest!",
     "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
     "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  },
+  {
+    "id": "7",
+    "userId": "2a3fe4asdfa253423",
+    "title": "REST is our friend!",
+    "body": "Cereate and enjoy!!",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  },
+  {
+    "id": "8",
+    "userId": "2a34fasdfa253423g",
+    "title": "Closures are cool",
+    "body": "Love it despite circumstances!",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
+  },
+  {
+    "id": "9",
+    "userId": "2a3AF4asdfa253423",
+    "title": "Long way to the top",
+    "body": "It was a hard time, guys!",
+    "avatar": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0ca61dd7-271e-4b2f-9319-46368acd2631?alt=media&token=cc65180c-acce-4cc1-bc33-abba81338b13",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/social-network-ivan.appspot.com/o/0f08be7c-9e96-478c-bdc8-6a68af4f6e1f?alt=media&token=fe6a4edf-2569-41eb-96f2-86347bfac220"
   }
 ]

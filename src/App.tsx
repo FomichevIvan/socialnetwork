@@ -7,6 +7,7 @@ import { RootState } from './store/redux/store';
 import { TopPanel } from './components/TopPanel';
 import { MessageNotifier } from './components/MessageNotifier';
 import { Loader } from './components/Loader';
+import { AuthRequired } from './components/AuthRequired';
 
 function App() {
   const user = useSelector((state: RootState) => state.user.user);
@@ -36,3 +37,4 @@ export default App;
 // как из айди пользователя делать имя без особых затрат (в посте только юид автора, что дальше?)
 // избежать мелькания экрана при неверном маршруте на главном экране Апп
 // как запретить переходить на регистрацию или логин вводя адрес в строке (редакс пустой, хотя юзер есть в аус)
+// как работает компонент картинок в муях

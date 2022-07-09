@@ -3,7 +3,7 @@ import { ReactElement, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/redux/store';
 import { clearErrors } from '../store/redux/users';
-
+import { auth } from '../index';
 import { registerUserAsync, signInUserAsync } from '../store/redux/firebase';
 import { useMatch, useNavigate } from 'react-router-dom';
 
@@ -65,8 +65,9 @@ export function AuthForm(): ReactElement {
   };
 
   useEffect(() => {
-    user && navigate('/');
-  }, [user]);
+    console.log(auth.currentUser);
+    auth.currentUser && navigate('/');
+  }, [auth.currentUser]);
 
   return (
     <>

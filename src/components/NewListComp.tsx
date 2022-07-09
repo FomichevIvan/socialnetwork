@@ -12,8 +12,10 @@ export function NewListComp({ list }: IListComponentProps) {
       <Box
         sx={{
           width: '100%',
-          maxWidth: 700,
-          bgcolor: 'background.paper',
+          maxWidth: '100%',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
         }}
       >
         {list?.map(

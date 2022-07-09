@@ -14,52 +14,46 @@ export const ContentNavbar = (): ReactElement => {
     <>
       <div className="container-navbar">
         <div className="inner-container-navbar">
-          <div className="menu-button">
-            <MenuButton
-              fontColor="black"
-              text="Home"
-              background="#FF8CCD"
-              containerBckgr="#FFBFDC"
-              textColor="white"
-              onClick={headTo}
-              id=""
-            />
-          </div>
-          <div>
-            <MenuButton
-              fontColor="black"
-              text="Posts"
-              background="#FFA68C"
-              containerBckgr="#FFCDBF"
-              textColor="white"
-              onClick={headTo}
-              id="posts"
-            />
-          </div>
+          <MenuButton
+            fontColor="black"
+            text="Home"
+            background="#FF8CCD"
+            containerBckgr="#FFBFDC"
+            textColor="white"
+            onClick={headTo}
+            id=""
+          />
+
+          <MenuButton
+            fontColor="black"
+            text="Posts"
+            background="#FFA68C"
+            containerBckgr="#FFCDBF"
+            textColor="white"
+            onClick={headTo}
+            id="posts"
+          />
         </div>
         <div className="inner-container-navbar">
-          <div>
-            <MenuButton
-              fontColor="black"
-              text="Photos"
-              background="#B199FF"
-              containerBckgr="#D4C6FF"
-              textColor="white"
-              onClick={headTo}
-              id="photo"
-            />
-          </div>
-          <div className="menu-button">
-            <MenuButton
-              fontColor="black"
-              text="Groups"
-              background="#98B7FF"
-              containerBckgr="#C6D7FF"
-              textColor="white"
-              onClick={headTo}
-              id="groups"
-            />
-          </div>
+          <MenuButton
+            fontColor="black"
+            text="Photos"
+            background="#B199FF"
+            containerBckgr="#D4C6FF"
+            textColor="white"
+            onClick={headTo}
+            id="photo"
+          />
+
+          <MenuButton
+            fontColor="black"
+            text="Groups"
+            background="#98B7FF"
+            containerBckgr="#C6D7FF"
+            textColor="white"
+            onClick={headTo}
+            id="groups"
+          />
         </div>
       </div>
     </>
