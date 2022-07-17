@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IPost, IReduxState } from '../../shared/interfaces/post';
+import { IPost, IReduxState } from '../../shared/interfaces/interfaces';
 import { getUrl } from '../../shared/utils/endpoints';
 
 const initialState: IReduxState = {

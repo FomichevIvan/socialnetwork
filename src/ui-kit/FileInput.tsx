@@ -1,5 +1,5 @@
 import { Input } from '@mui/material';
-import { IFileInputProps } from '../shared/interfaces/post';
+import { IFileInputProps } from '../shared/interfaces/interfaces';
 import { ReactElement } from 'react';
 import { GrCloudUpload } from 'react-icons/gr';
 

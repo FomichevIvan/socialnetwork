@@ -1,4 +1,4 @@
-import { INewPost } from '../shared/interfaces/post';
+import { INewPost } from '../shared/interfaces/interfaces';
 import { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeFlag, deletePostAsync, setCurPost } from '../store/redux/posts';
@@ -28,11 +28,7 @@ import {
   MdExpandMore,
 } from 'react-icons/md';
 
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-export function NewPost({
+export function PostComp({
   userId,
   id,
   title,
@@ -40,17 +36,6 @@ export function NewPost({
   avatar,
   photo,
 }: INewPost): ReactElement {
-  // const dispatch = useDispatch<AppDispatch>();
-  //
-  // const onDelete = () => {
-  //   id && dispatch(deletePostAsync(id));
-  // };
-  //
-  // const onEdit = () => {
-  //   dispatch(changeFlag(true));
-  //   dispatch(setCurPost({ userId, id, title, body }));
-  // };
-
   return (
     <Card className="card">
       <CardHeader

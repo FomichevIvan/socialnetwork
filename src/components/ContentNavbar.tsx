@@ -1,5 +1,4 @@
 import React, { ReactElement, SyntheticEvent } from 'react';
-import { Button, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { MenuButton } from '../ui-kit/MenuButton';
 
@@ -15,20 +14,18 @@ export const ContentNavbar = (): ReactElement => {
       <div className="container-navbar">
         <div className="inner-container-navbar">
           <MenuButton
-            fontColor="black"
             text="Home"
-            background="#FF8CCD"
-            containerBckgr="#FFBFDC"
+            buttonColor="#FF8CCD"
+            containerColor="#FFBFDC"
             textColor="white"
             onClick={headTo}
             id=""
           />
 
           <MenuButton
-            fontColor="black"
             text="Posts"
-            background="#FFA68C"
-            containerBckgr="#FFCDBF"
+            buttonColor="#FFA68C"
+            containerColor="#FFCDBF"
             textColor="white"
             onClick={headTo}
             id="posts"
@@ -36,20 +33,18 @@ export const ContentNavbar = (): ReactElement => {
         </div>
         <div className="inner-container-navbar">
           <MenuButton
-            fontColor="black"
             text="Photos"
-            background="#B199FF"
-            containerBckgr="#D4C6FF"
+            buttonColor="#B199FF"
+            containerColor="#D4C6FF"
             textColor="white"
             onClick={headTo}
             id="photo"
           />
 
           <MenuButton
-            fontColor="black"
             text="Groups"
-            background="#98B7FF"
-            containerBckgr="#C6D7FF"
+            buttonColor="#98B7FF"
+            containerColor="#C6D7FF"
             textColor="white"
             onClick={headTo}
             id="groups"

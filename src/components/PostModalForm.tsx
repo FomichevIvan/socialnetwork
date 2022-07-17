@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFlag, createNewPost, editPostAsync } from '../store/redux/posts';
-import { IPost, IPostModalProps } from '../shared/interfaces/post';
+import { IPost, IPostModalProps } from '../shared/interfaces/interfaces';
 import { Box, Button, Input, Modal, TextField } from '@mui/material';
 import { AppDispatch } from '../store/redux/store';
 

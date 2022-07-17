@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
-import { IListComponentProps, INewPost } from '../shared/interfaces/post';
+import { IListComponentProps, INewPost } from '../shared/interfaces/interfaces';
 import { ReactElement } from 'react';
 import { Box } from '@mui/material';
 import { Post } from './Post';
-import { NewPost } from './NewPost';
+import { PostComp } from './PostComp';
 
-export function NewListComp({ list }: IListComponentProps) {
+export function ListComp({ list }: IListComponentProps) {
   return (
     <div className="posts-box">
       <Box
@@ -27,7 +27,7 @@ export function NewListComp({ list }: IListComponentProps) {
             avatar,
             photo,
           }: INewPost): ReactElement => (
-            <NewPost
+            <PostComp
               key={id}
               title={title}
               body={body}

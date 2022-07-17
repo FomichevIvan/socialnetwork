@@ -101,3 +101,12 @@ export interface ITextFieldProps {
   text: string | undefined;
   label: string;
 }
+
+export interface IMenuButton {
+  id: string;
+  text: string;
+  buttonColor: string;
+  containerColor: string;
+  textColor: string;
+  onClick: (e: SyntheticEvent) => void;
+}

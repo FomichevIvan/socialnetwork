@@ -55,25 +55,27 @@ export const UserPhotoPage = (): ReactElement => {
   return (
     <>
       <div className="header-container">
-        <h1>User albums</h1>
+        <h1>
+          <p>User albums</p>
+        </h1>
       </div>
-      <div>
-        <div
-          style={{
-            width: '90%',
-            height: '90%',
-            display: 'flex',
-            flexWrap: 'wrap',
 
-            // justifyContent: 'space-between',
-          }}
-        >
-          {itemData.map(item => (
-            <div style={{ width: '50%' }} key={item.img}>
-              <img style={{ width: '15%' }} src={`${item.img}`} />
-            </div>
-          ))}
-        </div>
+      <div
+        style={{
+          width: '70%',
+          height: '90%',
+          display: 'flex',
+          flexWrap: 'wrap',
+        }}
+      >
+        {itemData.map(item => (
+          <div style={{ width: '50%' }} key={item.img}>
+            <img
+              style={{ width: '90%', height: '90%', objectFit: 'cover' }}
+              src={`${item.img}`}
+            />
+          </div>
+        ))}
       </div>
     </>
   );

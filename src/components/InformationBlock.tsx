@@ -2,7 +2,7 @@ import { ReactElement, SyntheticEvent } from 'react';
 import { TextInput } from '../ui-kit/TextInput';
 import { TextField } from '../ui-kit/TextField';
 import { EditBlock } from './EditBlock';
-import { IInformationBlock } from '../shared/interfaces/post';
+import { IInformationBlock } from '../shared/interfaces/interfaces';
 
 export const InformationBlock = ({
   edit,

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IReduxUserState } from '../../shared/interfaces/post';
+import { IReduxUserState } from '../../shared/interfaces/interfaces';
 import {
   // signInAndGetData,
   registerUserAsync,
@@ -30,10 +30,13 @@ const userSlice = createSlice({
     showLoading: (state, { payload }) => {
       state.loading = payload;
     },
+
+    showWarning: (state, { payload }) => {
+      state.message = { type: 'warning', message: payload };
+    },
   },
   extraReducers: builder => {
     builder.addCase(registerUserAsync.fulfilled, (state, { payload }: any) => {
-      console.log(payload, 'registerUserAsync payload');
       state.user = payload;
       state.message = { type: 'success', message: 'Success register!' };
     });
@@ -44,7 +47,6 @@ const userSlice = createSlice({
     });
 
     builder.addCase(signInUserAsync.fulfilled, (state, { payload }) => {
-      console.log(payload, 'signInUserAsync payload');
       state.user = payload;
       state.message = { type: 'success', message: 'Success login!' };
     });
@@ -67,7 +69,6 @@ const userSlice = createSlice({
     });
 
     builder.addCase(updateUserAsync.rejected, (state, { payload }: any) => {
-      console.log(payload, 'error');
       state.message = { type: 'error', message: payload };
     });
 
@@ -77,6 +78,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { clearErrors, signInAsCurrUser, showLoading } = userSlice.actions;
+export const { clearErrors, signInAsCurrUser, showLoading, showWarning } =
+  userSlice.actions;
 
 export default userSlice.reducer;

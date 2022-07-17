@@ -1,4 +1,4 @@
-import { IPost } from '../shared/interfaces/post';
+import { IPost } from '../shared/interfaces/interfaces';
 import { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeFlag, deletePostAsync, setCurPost } from '../store/redux/posts';
@@ -6,6 +6,7 @@ import { Button, ListItemText, Paper } from '@mui/material';
 import ListItem from '@mui/material/ListItem';
 import { AppDispatch } from '../store/redux/store';
 
+//OLD VERSION
 export function Post({ userId, id, title, body }: IPost): ReactElement {
   const dispatch = useDispatch<AppDispatch>();
 

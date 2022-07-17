@@ -1,5 +1,5 @@
 import { ReactElement, SyntheticEvent } from 'react';
-import { ITextFieldProps } from '../shared/interfaces/post';
+import { ITextFieldProps } from '../shared/interfaces/interfaces';
 
 export const TextField = ({ text, label }: ITextFieldProps): ReactElement => {
   return (

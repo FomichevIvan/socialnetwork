@@ -1,24 +1,61 @@
 import './App.css';
 import { AuthForm } from './components/AuthForm';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { MainPage } from './pages/MainPage';
-import { useSelector } from 'react-redux';
-import { RootState } from './store/redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from './store/redux/store';
 import { TopPanel } from './components/TopPanel';
 import { MessageNotifier } from './components/MessageNotifier';
-import { Loader } from './components/Loader';
-import { AuthRequired } from './components/AuthRequired';
+import { auth } from './index';
+import {
+  showLoading,
+  showWarning,
+  signInAsCurrUser,
+} from './store/redux/users';
+import { getDatabase, onValue, ref } from 'firebase/database';
+import { useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function App() {
   const user = useSelector((state: RootState) => state.user.user);
   const message = useSelector((state: RootState) => state.user.message);
+  const loading = useSelector((state: RootState) => state.user.loading);
+
+  const { currentUser } = auth;
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  const getUserData = (uid: string) => {
+    dispatch(showLoading(true));
+    const db = getDatabase();
+    const userRef = ref(db, `users/${uid}`);
+    return onValue(userRef, snapshot => {
+      console.log('onValue is getting data');
+      const data = snapshot.val();
+      data && dispatch(signInAsCurrUser(data));
+    });
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        getUserData(user.uid);
+      } else {
+        dispatch(showWarning('Sign up or login is required!'));
+        navigate('/login'); // protected route
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [currentUser]);
 
   return (
     <>
       {message && <MessageNotifier />}
       {user && <TopPanel />}
       <Routes>
-        <Route path={'*'} element={<MainPage />} />
+        <Route path={'*'} element={loading && !user ? null : <MainPage />} />
         <Route path={'login'} element={<AuthForm />} />
         <Route path={'register'} element={<AuthForm />} />
       </Routes>

@@ -65,39 +65,42 @@ export function AuthForm(): ReactElement {
   };
 
   useEffect(() => {
-    console.log(auth.currentUser);
-    auth.currentUser && navigate('/');
-  }, [auth.currentUser]);
+    user && navigate('/');
+  }, [user]);
 
   return (
     <>
-      <div className="wrapper">
-        <div className="container">
-          <Input
-            onChange={onChangeEmail}
-            value={email === null || email === undefined ? '' : email}
-            id="email"
-            type="mail"
-            placeholder="email"
-          />
+      {!user && (
+        <div className="wrapper">
+          <div className="container">
+            <Input
+              onChange={onChangeEmail}
+              value={email === null || email === undefined ? '' : email}
+              id="email"
+              type="mail"
+              placeholder="email"
+            />
 
-          <Input
-            onChange={onChangePassword}
-            value={password === null || password === undefined ? '' : password}
-            id="password"
-            type="password"
-            placeholder="password"
-          />
+            <Input
+              onChange={onChangePassword}
+              value={
+                password === null || password === undefined ? '' : password
+              }
+              id="password"
+              type="password"
+              placeholder="password"
+            />
 
-          <Button disabled={!email || !password} onClick={loginOrSignUpUser}>
-            {isNew ? 'Зарегистрироваться' : 'Войти'}
-          </Button>
+            <Button disabled={!email || !password} onClick={loginOrSignUpUser}>
+              {isNew ? 'Зарегистрироваться' : 'Войти'}
+            </Button>
+          </div>
+          {isNew ? hasAccount : newUser}
+          <div className="red-circle">
+            <span>hi! ;)</span>
+          </div>
         </div>
-        {isNew ? hasAccount : newUser}
-        <div className="red-circle">
-          <span>hi! ;)</span>
-        </div>
-      </div>
+      )}
     </>
   );
 }

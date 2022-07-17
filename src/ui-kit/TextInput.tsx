@@ -1,6 +1,6 @@
 import { Input } from '@mui/material';
 import { ReactElement, SyntheticEvent } from 'react';
-import { ITextInputProps } from '../shared/interfaces/post';
+import { ITextInputProps } from '../shared/interfaces/interfaces';
 
 export const TextInput = ({
   text,

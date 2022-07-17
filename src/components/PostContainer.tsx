@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NewListComp } from './index';
+import { ListComp } from './index';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../store/redux/store';
 import { changeFlag, loadAllPosts, setCurPost } from '../store/redux/posts';
@@ -30,7 +30,9 @@ export default function PostContainer() {
   return (
     <>
       <div className="header-container">
-        <h1>Post list</h1>
+        <h1>
+          <p>Post list</p>
+        </h1>
       </div>
       {/*<Button*/}
       {/*  className={'start-button'}*/}
@@ -40,7 +42,7 @@ export default function PostContainer() {
       {/*  Add post*/}
       {/*</Button>*/}
       {/*{show && <PostModalForm post={post} onCancel={onCancel} show={show} />}*/}
-      {<NewListComp list={list} />}
+      {<ListComp list={list} />}
     </>
   );
 }

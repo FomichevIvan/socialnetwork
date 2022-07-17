@@ -1,7 +1,7 @@
 import { FileInput } from '../ui-kit/FileInput';
 import { ReactElement, SyntheticEvent } from 'react';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
-import { IFileLoader } from '../shared/interfaces/post';
+import { IFileLoader } from '../shared/interfaces/interfaces';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/redux/store';
 import { showLoading } from '../store/redux/users';

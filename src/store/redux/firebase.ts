@@ -51,7 +51,6 @@ export const registerUserAsync = createAsyncThunk(
         email: email,
         avatar:
           'https://i1.sndcdn.com/avatars-000495007683-zg65ko-t500x500.jpg',
-
         name: 'Anon',
         lastName: 'Well-Known',
         city: 'SomewhereBurg',
@@ -61,7 +60,6 @@ export const registerUserAsync = createAsyncThunk(
         email: email,
         avatar:
           'https://i1.sndcdn.com/avatars-000495007683-zg65ko-t500x500.jpg',
-
         name: 'Anon',
         lastName: 'Well-Known',
         city: 'SomewhereBurg',

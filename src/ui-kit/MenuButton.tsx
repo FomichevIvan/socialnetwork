@@ -1,28 +1,25 @@
 import { ReactElement, SyntheticEvent } from 'react';
+import { IMenuButton } from '../shared/interfaces/interfaces';
 
-interface IMenuButton {
-  id: string;
-  fontColor: string;
-  text: string;
-  background: string;
-  containerBckgr: string;
-  textColor: string;
-  onClick: (e: SyntheticEvent) => void;
-}
-
-export const MenuButton = (props: IMenuButton): ReactElement => {
+export const MenuButton = ({
+  id,
+  containerColor,
+  textColor,
+  text,
+  buttonColor,
+  onClick,
+}: IMenuButton): ReactElement => {
   return (
     <div
       className="menu-button-cont"
-      style={{ backgroundColor: props.containerBckgr }}
+      style={{ backgroundColor: containerColor }}
     >
       <button
-        id={props.id}
-        onClick={props.onClick}
-        color={props.fontColor}
-        style={{ background: props.background, color: props.textColor }}
+        id={id}
+        onClick={onClick}
+        style={{ background: buttonColor, color: textColor }}
       >
-        {props.text}
+        {text}
       </button>
     </div>
   );

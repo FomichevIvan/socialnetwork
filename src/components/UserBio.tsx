@@ -4,7 +4,7 @@ import { FileLoader } from './FileLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/redux/store';
 import { updateUserAsync } from '../store/redux/firebase';
-import { IUserFields } from '../shared/interfaces/post';
+import { IUserFields } from '../shared/interfaces/interfaces';
 import { InformationBlock } from './InformationBlock';
 import { showLoading } from '../store/redux/users';
 import { Loader } from './Loader';
